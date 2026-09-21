@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Wiki interactif bilingue pour Iron's Spells 'n Spellbooks et ses addons — Minecraft 1.21.1 NeoForge.">
+  <meta name="theme-color" content="#100d18">
+  <title>Iron's Ultimate Wiki</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#content">Aller au contenu</a>
+  <div class="grain" aria-hidden="true"></div>
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="#home" aria-label="Iron's Ultimate Wiki">
+      <span class="brand-sigil">I</span>
+      <span><strong>Iron’s</strong><small>Ultimate Wiki</small></span>
+    </a>
+    <nav id="main-nav" aria-label="Navigation principale"></nav>
+    <div class="sidebar-foot">
+      <span class="status-dot"></span>
+      <div><strong>1.21.1</strong><small>NeoForge 21.1.250</small></div>
+    </div>
+  </aside>
+
+  <header class="topbar">
+    <button class="icon-button menu-button" id="menu-button" aria-label="Menu">☰</button>
+    <div class="global-search">
+      <span aria-hidden="true">⌕</span>
+      <input id="global-search" type="search" autocomplete="off" placeholder="Rechercher un sort, objet, mob…">
+      <kbd>/</kbd>
+    </div>
+    <button class="language-button" id="language-button" aria-label="Changer de langue"><span>FR</span><i></i><span>EN</span></button>
+    <a class="github-button" href="https://github.com/NeptuneOff/Iron-s-Spell-and-addons-Ultimate-Wiki" target="_blank" rel="noreferrer">GitHub ↗</a>
+  </header>
+
+  <main id="content" tabindex="-1"></main>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

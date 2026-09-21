@@ -1,0 +1,10 @@
+{
+  "name": "irons-ultimate-wiki",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "extract": "node scripts/extract-content.mjs",
+    "check": "node scripts/check-data.mjs",
+    "serve": "npx serve docs"
+  }
+}

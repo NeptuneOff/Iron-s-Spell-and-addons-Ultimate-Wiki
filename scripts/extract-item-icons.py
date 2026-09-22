@@ -121,7 +121,18 @@ def render_icon(zf: zipfile.ZipFile, paths: list[str], label: str, seed: str) ->
     canvas = Image.new("RGBA", (CELL, CELL), (0, 0, 0, 0))
     if layers:
         for layer in layers:
-            layer.thumbnail((48, 48), Image.Resampling.NEAREST)
+            # Minecraft item textures are commonly 16×16. `thumbnail()` only
+            # shrinks images, leaving those originals tiny inside a 64px atlas
+            # cell. Animated textures are vertical strips, so use their first
+            # square frame before scaling every layer up to the same 48px box.
+            if layer.height > layer.width and layer.height % layer.width == 0:
+                layer = layer.crop((0, 0, layer.width, layer.width))
+            scale = min(48 / layer.width, 48 / layer.height)
+            target = (
+                max(1, round(layer.width * scale)),
+                max(1, round(layer.height * scale)),
+            )
+            layer = layer.resize(target, Image.Resampling.NEAREST)
             x = (CELL - layer.width) // 2
             y = (CELL - layer.height) // 2
             canvas.alpha_composite(layer, (x, y))
@@ -169,7 +180,7 @@ def main() -> None:
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     atlas.save(ATLAS_PATH, "WEBP", lossless=True, method=6)
     data.setdefault("meta", {})["itemAtlas"] = {
-        "path": "./assets/item-icons.webp",
+        "path": "./assets/item-icons.webp?v=20260922-2",
         "cell": CELL,
         "columns": COLUMNS,
         "width": atlas.width,

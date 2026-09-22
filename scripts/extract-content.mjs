@@ -64,6 +64,7 @@ const unzipText = (jar, entry) => execFileSync("unzip", ["-p", jar, entry], { en
 const walk = dir => existsSync(dir) ? readdirSync(dir).flatMap(name => { const path = join(dir, name); return statSync(path).isDirectory() ? walk(path) : [path]; }) : [];
 const pretty = id => id.replaceAll("_", " ").replace(/\b\w/g, c => c.toUpperCase());
 const simpleTranslationEntries = (lang, prefix) => Object.entries(lang).filter(([key]) => key.startsWith(prefix) && key.split(".").length === 3);
+const itemTags = new Map();
 
 function readLang(jar, modId, locale = "en_us") {
   const wanted = `assets/${modId}/lang/${locale}.json`;
@@ -216,6 +217,59 @@ function recipeIngredients(json) {
   return [...new Set(deepStrings(source).filter(value => value.includes(":")))].slice(0, 24);
 }
 
+function expandedTag(id, seen = new Set()) {
+  if (seen.has(id)) return [];
+  seen.add(id);
+  return [...new Set((itemTags.get(id) ?? []).flatMap(value => {
+    const ref = typeof value === "string" ? value : value?.id;
+    if (!ref) return [];
+    return ref.startsWith("#") ? expandedTag(ref.slice(1), seen) : [ref];
+  }))];
+}
+
+function ingredientSpec(value) {
+  if (!value) return null;
+  if (Array.isArray(value)) {
+    const options = value.map(ingredientSpec).filter(Boolean);
+    return options.length === 1 ? options[0] : { kind: "any", options };
+  }
+  if (typeof value === "string") {
+    if (value.startsWith("#")) return { kind: "tag", id: value.slice(1), options: expandedTag(value.slice(1)).slice(0, 64) };
+    return { kind: "item", id: value };
+  }
+  if (typeof value !== "object") return null;
+  if (value.item || value.id) return { kind: "item", id: value.item ?? value.id };
+  if (value.tag) return { kind: "tag", id: value.tag, options: expandedTag(value.tag).slice(0, 64) };
+  if (value.items) return ingredientSpec(value.items);
+  return null;
+}
+
+function recipeVisual(json) {
+  const type = String(json.type ?? "crafting").split(":").at(-1);
+  if (type === "crafting_shaped" || type === "mechanical_crafting") {
+    return {
+      kind: "grid",
+      pattern: json.pattern ?? [],
+      key: Object.fromEntries(Object.entries(json.key ?? {}).map(([symbol, value]) => [symbol, ingredientSpec(value)]))
+    };
+  }
+  if (type === "crafting_shapeless") return { kind: "shapeless", inputs: (json.ingredients ?? []).map(ingredientSpec).filter(Boolean) };
+  if (type === "smithing_transform" || type === "smithing_trim") {
+    return { kind: "smithing", template: ingredientSpec(json.template), base: ingredientSpec(json.base), addition: ingredientSpec(json.addition) };
+  }
+  if (["smelting", "blasting", "smoking", "campfire_cooking"].includes(type)) {
+    return { kind: "cooking", input: ingredientSpec(json.ingredient), seconds: Number(json.cookingtime ?? 0) / 20, experience: Number(json.experience ?? 0) };
+  }
+  const candidateKeys = ["ingredients", "ingredient", "input", "inputs", "base", "addition", "template", "primary", "secondary", "catalyst", "pedestalItems"];
+  const inputs = candidateKeys.flatMap(key => {
+    const value = json[key];
+    if (value == null) return [];
+    const values = Array.isArray(value) ? value : [value];
+    return values.map(ingredientSpec).filter(Boolean);
+  });
+  return { kind: "process", inputs: inputs.length ? inputs : recipeIngredients(json).map(ingredientSpec).filter(Boolean) };
+}
+
 function itemShape(id, en) {
   // Never include the namespace here: `irons_spellbooks:*` would otherwise
   // make every item from the base mod look like a spellbook.
@@ -253,7 +307,7 @@ function parseCatalog(mod, lang, entries, jar) {
       const json = JSON.parse(unzipText(jar, entry));
       const result = recipeResult(json);
       if (!result) continue;
-      const row = { type: String(json.type ?? "crafting").split(":").at(-1), ingredients: recipeIngredients(json), source: entry };
+      const row = { type: String(json.type ?? "crafting").split(":").at(-1), ingredients: recipeIngredients(json), visual: recipeVisual(json), source: entry };
       recipes.set(result, [...(recipes.get(result) ?? []), row]);
     } catch { /* invalid optional recipe */ }
   }
@@ -351,6 +405,23 @@ function buildArmorSets(items) {
     set.affinities.push(...item.affinities);
   }
   return [...groups.values()].map(set => ({ ...set, affinities: [...new Set(set.affinities)], pieceCount: Object.values(set.pieces).filter(entries => entries.length).length })).sort((a, b) => a.name.en.localeCompare(b.name.en));
+}
+
+// Recipes frequently refer to item tags owned by a dependency or another
+// addon. Merge every definition first so visual recipes can show a concrete
+// representative item and the number of accepted variants.
+for (const mod of mods) {
+  const jar = join(jarRoot, mod.jar);
+  for (const entry of unzipList(jar).filter(path => /^data\/.+\/tags\/items?\/.+\.json$/.test(path))) {
+    try {
+      const [, namespace, tagPath] = entry.match(/^data\/([^/]+)\/tags\/items?\/(.+)\.json$/) ?? [];
+      if (!namespace || !tagPath) continue;
+      const json = JSON.parse(unzipText(jar, entry));
+      const id = `${namespace}:${tagPath}`;
+      const previous = json.replace === true ? [] : (itemTags.get(id) ?? []);
+      itemTags.set(id, [...previous, ...(json.values ?? [])]);
+    } catch { /* invalid optional tag */ }
+  }
 }
 
 const all = { spells: [], items: [], entities: [], enchantments: [], structures: [] };

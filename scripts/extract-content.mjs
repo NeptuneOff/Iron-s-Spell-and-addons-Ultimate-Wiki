@@ -217,7 +217,9 @@ function recipeIngredients(json) {
 }
 
 function itemShape(id, en) {
-  const value = `${id} ${en}`.toLowerCase();
+  // Never include the namespace here: `irons_spellbooks:*` would otherwise
+  // make every item from the base mod look like a spellbook.
+  const value = `${id.split(":")[1] ?? id} ${en}`.toLowerCase();
   const slotRules = [
     ["helmet", /(helmet|hat|hood|mask|crown|head dress|headdress|visor|horns|hair|circlet|blindfold)$/],
     ["chestplate", /(chestplate|robe|robes|tunic|coat|jacket|cuirass|chest piece)$/],

@@ -1,276 +1,94 @@
-const $ = (selector, root = document) => root.querySelector(selector);
-const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
-const esc = value => String(value ?? "").replace(/[&<>'"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" })[c]);
-const slugName = value => value?.replaceAll("_", " ") ?? "—";
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const esc=v=>String(v??"").replace(/[&<>'"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"})[c]);
+const slug=v=>String(v??"—").replaceAll("_"," ");
 
-const i18n = {
-  fr: {
-    nav: ["Accueil", "Écoles", "Sorts", "Équipement", "Bestiaire", "Structures", "Créateur de setup", "Sources"],
-    search: "Rechercher un sort, objet, mob…", heroEyebrow: "Grimoire communautaire · Édition 1.21.1",
-    heroTitle: "Maîtrisez chaque <span>école de magie</span>.", heroLead: "Le catalogue bilingue d’Iron’s Spells et de ses addons, extrait des versions exactes de votre modpack — avec un créateur de setup à une ou deux écoles.",
-    explore: "Explorer les écoles", create: "Créer mon setup", schools: "Écoles", spells: "Sorts", items: "Objets", mods: "Mods audités",
-    featured: "Les écoles du grimoire", featuredSub: "Chaque école change l’ambiance et les recommandations du wiki.", seeAll: "Tout afficher",
-    catalog: "Catalogue des sorts", catalogLead: "Niveaux, rareté, mana, temps de recharge et provenance issus des classes du JAR exact.",
-    allSchools: "Toutes les écoles", allMods: "Tous les mods", allRarities: "Toutes les raretés", results: "résultats", details: "Détails",
-    level: "Niveau max", cooldown: "Recharge", mana: "Mana initial", cast: "Incantation", acquisition: "Obtention", source: "Source",
-    acquisition_scroll_forge_or_loot: "Forge à parchemins / butin", acquisition_special: "Obtention spéciale", acquisition_craft: "Fabrication", acquisition_loot_or_special: "Butin / progression spéciale",
-    gear: "Équipement", gearLead: "Armures, armes, grimoires, curios et matériaux déclarés par les mods concernés.", type: "Type", allTypes: "Tous les types",
-    bestiary: "Bestiaire", bestiaryLead: "Créatures, invocations et entités magiques déclarées par les addons.", structures: "Structures", structuresLead: "Structures worldgen déclarées dans les fichiers de données exacts.",
-    build: "Créateur de setup", buildLead: "L’assistant propose une combinaison cohérente ; le mode libre vous laisse tout choisir. Maximum : deux écoles.", guided: "Mode guidé", free: "Mode libre",
-    role: "1 · Choisissez votre style", schoolsPick: "2 · Choisissez une ou deux écoles", spellPick: "3 · Composez votre grimoire", equipment: "4 · Équipez votre mage",
-    suggest: "Générer une recommandation", reset: "Réinitialiser", save: "Sauvegarder", share: "Copier le lien", add: "Ajouter", selected: "sélectionnés", buildName: "Setup sans nom",
-    sourceTitle: "Sources et traçabilité", sourceLead: "Le wiki cible votre installation exacte. Les dépôts servent de référence ; si leur version diffère, le JAR installé prime pour les données factuelles.",
-    exact: "Source exacte", jarExact: "JAR exact, dépôt en retard", jarOnly: "JAR exact, aucun dépôt trouvé", officialPage: "Page officielle", repository: "Code source", noResult: "Aucun résultat pour ces filtres.",
-    translationNotice: "L’interface est entièrement bilingue. Les noms et descriptions FR officiels sont utilisés lorsqu’ils existent ; les addons sans traduction française conservent temporairement leur texte anglais pour éviter d’inventer une traduction technique.",
-    searchTitle: "Recherche globale", searchLead: "Résultats dans les sorts, objets, créatures et structures.", copied: "Lien copié", saved: "Setup sauvegardé", maxSchools: "Deux écoles maximum", chooseSchool: "Choisissez au moins une école",
-    guideTitle: "Pourquoi cette combinaison ?", slots: "emplacements", provenance: "Provenance", defaultConfig: "Configuration par défaut"
-  },
-  en: {
-    nav: ["Home", "Schools", "Spells", "Gear", "Bestiary", "Structures", "Build creator", "Sources"],
-    search: "Search a spell, item, mob…", heroEyebrow: "Community grimoire · 1.21.1 edition",
-    heroTitle: "Master every <span>school of magic</span>.", heroLead: "The bilingual catalogue for Iron’s Spells and its addons, extracted from the exact versions in your modpack — with a one or two-school build creator.",
-    explore: "Explore schools", create: "Create my build", schools: "Schools", spells: "Spells", items: "Items", mods: "Audited mods",
-    featured: "Schools of the grimoire", featuredSub: "Each school changes the wiki atmosphere and recommendations.", seeAll: "View all",
-    catalog: "Spell catalogue", catalogLead: "Levels, rarity, mana, cooldown and provenance extracted from the exact JAR classes.",
-    allSchools: "All schools", allMods: "All mods", allRarities: "All rarities", results: "results", details: "Details",
-    level: "Max level", cooldown: "Cooldown", mana: "Base mana", cast: "Cast", acquisition: "Acquisition", source: "Source",
-    acquisition_scroll_forge_or_loot: "Scroll forge / loot", acquisition_special: "Special acquisition", acquisition_craft: "Crafting", acquisition_loot_or_special: "Loot / special progression",
-    gear: "Gear", gearLead: "Armor, weapons, spellbooks, curios and materials declared by the relevant mods.", type: "Type", allTypes: "All types",
-    bestiary: "Bestiary", bestiaryLead: "Creatures, summons and magical entities declared by the addons.", structures: "Structures", structuresLead: "Worldgen structures declared in the exact data files.",
-    build: "Build creator", buildLead: "The assistant suggests a coherent combination; free mode lets you choose everything. Maximum: two schools.", guided: "Guided mode", free: "Free mode",
-    role: "1 · Choose your playstyle", schoolsPick: "2 · Choose one or two schools", spellPick: "3 · Assemble your spellbook", equipment: "4 · Equip your mage",
-    suggest: "Generate recommendation", reset: "Reset", save: "Save", share: "Copy link", add: "Add", selected: "selected", buildName: "Unnamed build",
-    sourceTitle: "Sources and traceability", sourceLead: "The wiki targets your exact installation. Repositories are references; when versions differ, the installed JAR prevails for factual data.",
-    exact: "Exact source", jarExact: "Exact JAR, repository behind", jarOnly: "Exact JAR, no repository found", officialPage: "Official page", repository: "Source code", noResult: "No results for these filters.",
-    translationNotice: "The interface is fully bilingual. Official French names and descriptions are used when available; addons without a French translation temporarily retain their English text to avoid inventing technical translations.",
-    searchTitle: "Global search", searchLead: "Results across spells, items, creatures and structures.", copied: "Link copied", saved: "Build saved", maxSchools: "Two schools maximum", chooseSchool: "Choose at least one school",
-    guideTitle: "Why this combination?", slots: "slots", provenance: "Provenance", defaultConfig: "Default configuration"
-  }
+const i18n={
+fr:{
+nav:["Accueil","Écoles","Sorts","Armures","Armes","Objets","Bestiaire","Structures","Créateur de setup","Sources"],search:"Rechercher un sort, objet, mob…",heroEyebrow:"Grimoire communautaire · Édition 1.21.1",heroTitle:"Maîtrisez chaque <span>école de magie</span>.",heroLead:"Le wiki bilingue d’Iron’s Spells et de ses addons, extrait des versions exactes de votre modpack — avec analyse des sorts, recettes et créateur de setup.",explore:"Explorer les écoles",create:"Créer mon setup",schools:"Écoles",spells:"Sorts",items:"Objets",mods:"Mods audités",featured:"Les écoles du grimoire",featuredSub:"Chaque école utilise un symbole provenant des objets officiels du mod concerné.",seeAll:"Tout afficher",
+catalog:"Catalogue des sorts",catalogLead:"Nature, portée, niveau, mana, puissance, recharge et provenance extraits du code des JAR exacts.",allSchools:"Toutes les écoles",allMods:"Tous les mods",allRarities:"Toutes les raretés",allNatures:"Toutes les natures",allDeliveries:"Toutes les portées",results:"résultats",details:"Détails",level:"Niveau max",cooldown:"Recharge",mana:"Mana",cast:"Incantation",acquisition:"Obtention",source:"Source",power:"Puissance",nature:"Nature",delivery:"Portée / forme",
+gear:"Objets et équipements",gearLead:"Grimoires, curios, orbes, runes, matériaux et autres objets des mods audités.",allTypes:"Tous les types",armor:"Ensembles d’armures",armorLead:"Les pièces sont regroupées uniquement par ensemble cohérent, sans mélange entre matériaux ou familles.",weapons:"Armes",weaponsLead:"Armes filtrables par école, affinité et avantage de sort inné.",bestiary:"Bestiaire",bestiaryLead:"Créatures, invocations et entités magiques déclarées par les addons.",structures:"Structures",structuresLead:"Structures worldgen déclarées dans les fichiers de données exacts.",
+build:"Créateur de setup",buildLead:"Choisissez une ou deux écoles : l’assistant recommande sorts, armes, armures, grimoires, curios et améliorations compatibles.",guided:"Mode guidé",free:"Mode libre",role:"1 · Choisissez votre style",schoolsPick:"2 · Choisissez une ou deux écoles",spellPick:"3 · Composez votre grimoire",equipment:"4 · Équipement conseillé",suggest:"Générer une recommandation",reset:"Réinitialiser",save:"Sauvegarder",share:"Copier le lien",add:"Ajouter",buildName:"Setup sans nom",equip:"Choisir",
+sourceTitle:"Sources et traçabilité",sourceLead:"Le JAR installé prime pour les données factuelles ; le dépôt public sert de référence lisible.",exact:"Source exacte",jarExact:"JAR exact, dépôt en retard",jarOnly:"JAR exact, aucun dépôt trouvé",officialPage:"Page officielle",repository:"Code source",noResult:"Aucun résultat pour ces filtres.",translationNotice:"Les noms et descriptions françaises officielles sont utilisés lorsqu’ils existent. Un texte anglais est conservé lorsqu’aucune traduction fiable n’est fournie.",searchTitle:"Recherche globale",searchLead:"Résultats dans les sorts et objets.",copied:"Lien copié",saved:"Setup sauvegardé",maxSchools:"Deux écoles maximum",chooseSchool:"Choisissez au moins une école",guideTitle:"Pourquoi cette combinaison ?",provenance:"Provenance",defaultConfig:"Configuration par défaut",recipes:"Recettes",loot:"Butin et sources",noRecipe:"Aucune recette ni table de butin directe détectée : obtention spéciale ou progression propre au mod.",
+formulaHelp:"Lecture des valeurs : base + progression × (niveau − 1). Au niveau 1, seule la base s’applique. La valeur maximale affichée est calculée au niveau maximum du sort. Le mana est un coût ; dégâts, soins et statistiques d’invocation sont étiquetés séparément.",dataEstimate:"Valeur partielle : d’autres bonus peuvent dépendre de l’arme, de l’entité ou de vos attributs.",sort:"Trier",theme:"Changer de thème",variants:"variantes",pieces:"pièces",innate:"Sorts innés",aboveMax:"au-dessus du niveau normal",recommended:"Recommandé pour ce setup"},
+en:{
+nav:["Home","Schools","Spells","Armor","Weapons","Items","Bestiary","Structures","Build creator","Sources"],search:"Search a spell, item, mob…",heroEyebrow:"Community grimoire · 1.21.1 edition",heroTitle:"Master every <span>school of magic</span>.",heroLead:"The bilingual Iron’s Spells addon wiki, extracted from the exact modpack versions — with spell analysis, recipes and a build creator.",explore:"Explore schools",create:"Create my build",schools:"Schools",spells:"Spells",items:"Items",mods:"Audited mods",featured:"Schools of the grimoire",featuredSub:"Every school uses a symbol taken from an official item belonging to its mod.",seeAll:"View all",
+catalog:"Spell catalogue",catalogLead:"Nature, delivery, level, mana, power, cooldown and provenance extracted from the exact JAR code.",allSchools:"All schools",allMods:"All mods",allRarities:"All rarities",allNatures:"All natures",allDeliveries:"All deliveries",results:"results",details:"Details",level:"Max level",cooldown:"Cooldown",mana:"Mana",cast:"Cast",acquisition:"Acquisition",source:"Source",power:"Power",nature:"Nature",delivery:"Delivery / shape",
+gear:"Items and gear",gearLead:"Spellbooks, curios, orbs, runes, materials and other items from the audited mods.",allTypes:"All types",armor:"Armor sets",armorLead:"Pieces are grouped only into coherent sets, never mixed across materials or families.",weapons:"Weapons",weaponsLead:"Weapons filterable by school, affinity and innate-spell advantage.",bestiary:"Bestiary",bestiaryLead:"Creatures, summons and magical entities declared by the addons.",structures:"Structures",structuresLead:"Worldgen structures declared in the exact data files.",
+build:"Build creator",buildLead:"Choose one or two schools: the assistant recommends compatible spells, weapons, armor, spellbooks, curios and upgrades.",guided:"Guided mode",free:"Free mode",role:"1 · Choose your playstyle",schoolsPick:"2 · Choose one or two schools",spellPick:"3 · Assemble your spellbook",equipment:"4 · Recommended equipment",suggest:"Generate recommendation",reset:"Reset",save:"Save",share:"Copy link",add:"Add",buildName:"Unnamed build",equip:"Select",
+sourceTitle:"Sources and traceability",sourceLead:"The installed JAR prevails for facts; public repositories provide a readable reference.",exact:"Exact source",jarExact:"Exact JAR, repository behind",jarOnly:"Exact JAR, no repository found",officialPage:"Official page",repository:"Source code",noResult:"No results for these filters.",translationNotice:"Official French names and descriptions are used where available. English is retained whenever no trustworthy translation is provided.",searchTitle:"Global search",searchLead:"Results across spells and items.",copied:"Link copied",saved:"Build saved",maxSchools:"Two schools maximum",chooseSchool:"Choose at least one school",guideTitle:"Why this combination?",provenance:"Provenance",defaultConfig:"Default configuration",recipes:"Recipes",loot:"Loot and sources",noRecipe:"No direct recipe or loot table was detected: special acquisition or mod-specific progression.",
+formulaHelp:"Reading values: base + progression × (level − 1). At level 1, only the base applies. The displayed maximum is calculated at the spell’s maximum level. Mana is a cost; damage, healing and summon statistics are labelled separately.",dataEstimate:"Partial value: additional bonuses may depend on the weapon, entity or your attributes.",sort:"Sort",theme:"Change theme",variants:"variants",pieces:"pieces",innate:"Innate spells",aboveMax:"above normal maximum",recommended:"Recommended for this build"}
 };
 
-const routeDefs = [
-  ["home", "⌂"], ["schools", "✦"], ["spells", "⌁"], ["gear", "⚔"], ["bestiary", "♜"], ["structures", "◇"], ["build", "⚙"], ["sources", "↗"]
-];
-const rarityRank = { legendary: 5, epic: 4, rare: 3, uncommon: 2, common: 1, unknown: 0 };
-const roleSchools = {
-  battlemage: ["fire", "lightning", "blood", "shadow"], warden: ["nature", "holy", "ice", "radiance"],
-  controller: ["eldritch", "ender", "evocation", "ritual"], summoner: ["eldritch", "blood", "evocation", "spirit"],
-  mobility: ["ender", "lightning", "symmetry", "spirit"], technomancer: ["technomancy", "cosmic", "aqua", "abyssal"]
-};
-const roleLabels = {
-  battlemage: ["Mage de bataille", "Battlemage", "Dégâts directs et pression", "Direct damage and pressure"],
-  warden: ["Gardien", "Warden", "Défense, soin et contrôle", "Defense, healing and control"],
-  controller: ["Arcaniste", "Arcanist", "Entraves et magie complexe", "Disruption and complex magic"],
-  summoner: ["Invocateur", "Summoner", "Alliés et terrain", "Allies and battlefield"],
-  mobility: ["Duelliste", "Duelist", "Mobilité et tempo", "Mobility and tempo"],
-  technomancer: ["Technomancien", "Technomancer", "Machines et utilitaire", "Machines and utility"]
-};
+const routes=[["home","⌂"],["schools","✦"],["spells","⌁"],["armor","◈"],["weapons","⚔"],["items","◇"],["bestiary","♜"],["structures","⬡"],["build","⚙"],["sources","↗"]];
+const rarityRank={legendary:5,epic:4,rare:3,uncommon:2,common:1,unknown:0};
+const roleSchools={battlemage:["fire","lightning","blood","shadow"],warden:["nature","holy","ice","radiance"],controller:["eldritch","ender","evocation","ritual"],summoner:["eldritch","blood","evocation","spirit"],mobility:["ender","lightning","symmetry","spirit"],technomancer:["technomancy","cosmic","aqua","abyssal"]};
+const roleLabels={battlemage:["Mage de bataille","Battlemage","Dégâts directs et pression","Direct damage and pressure"],warden:["Gardien","Warden","Défense, soin et contrôle","Defense, healing and control"],controller:["Arcaniste","Arcanist","Entraves et magie complexe","Disruption and complex magic"],summoner:["Invocateur","Summoner","Alliés et terrain","Allies and battlefield"],mobility:["Duelliste","Duelist","Mobilité et tempo","Mobility and tempo"],technomancer:["Technomancien","Technomancer","Machines et utilitaire","Machines and utility"]};
+const labels={fr:{offense:"Offensif",defense:"Défensif",summon:"Invocation",heal:"Soin",control:"Contrôle",mobility:"Mobilité",utility:"Utilitaire",projectile:"Projectile",target:"Cible",area:"Autour / zone",static:"Zone statique",self:"Sur soi",direct:"Direct",mana:"Coût en mana",damage:"Dégâts",healing:"Soin",spell_power:"Puissance brute",summon_damage:"Dégâts de l’invocation",summon_health:"PV de l’invocation",summon_count:"Nombre invoqué",armor:"Armure",weapon:"Arme",spellbook:"Grimoire",curio:"Curio",upgrade:"Amélioration",item:"Objet",helmet:"Casque",chestplate:"Plastron",leggings:"Jambières",boots:"Bottes"},en:{offense:"Offensive",defense:"Defensive",summon:"Summon",heal:"Healing",control:"Control",mobility:"Mobility",utility:"Utility",projectile:"Projectile",target:"Targeted",area:"Area / around caster",static:"Static zone",self:"Self",direct:"Direct",mana:"Mana cost",damage:"Damage",healing:"Healing",spell_power:"Raw spell power",summon_damage:"Summon damage",summon_health:"Summon HP",summon_count:"Summon count",armor:"Armor",weapon:"Weapon",spellbook:"Spellbook",curio:"Curio",upgrade:"Upgrade",item:"Item",helmet:"Helmet",chestplate:"Chestplate",leggings:"Leggings",boots:"Boots"}};
 
-let data;
-let lang = localStorage.getItem("irons-wiki-lang") || "fr";
-let build = JSON.parse(localStorage.getItem("irons-wiki-build") || "null") || { mode: "guided", role: "battlemage", schools: [], spells: [], gear: {}, name: "" };
-const t = key => i18n[lang][key] ?? key;
-const schoolById = id => data.schools.find(s => s.id === id) || data.schools.at(-1);
-const modById = id => data.mods.find(m => m.id === id);
-const localName = entry => entry?.name?.[lang] || entry?.name?.en || "—";
-const paramsForHash = () => new URLSearchParams(location.hash.split("?")[1] || "");
-const route = () => (location.hash.slice(1).split("?")[0] || "home");
+let data,lang=localStorage.getItem("irons-wiki-lang")||"fr",colorTheme=localStorage.getItem("irons-wiki-theme")||"dark";
+let build=JSON.parse(localStorage.getItem("irons-wiki-build")||"null")||{mode:"guided",role:"battlemage",schools:[],spells:[],gear:{},name:""};
+const t=k=>i18n[lang][k]??k,label=k=>labels[lang][k]??slug(k),localName=e=>e?.name?.[lang]||e?.name?.en||"—";
+const schoolById=id=>data.schools.find(s=>s.id===id),modById=id=>data.mods.find(m=>m.id===id),itemById=id=>data.items.find(i=>i.id===id);
+const route=()=>location.hash.slice(1).split("?")[0]||"home",params=()=>new URLSearchParams(location.hash.split("?")[1]||"");
 
-function setTheme(schoolId) {
-  const color = schoolById(schoolId)?.color || "#a36bf2";
-  document.documentElement.style.setProperty("--accent", color);
-  const rgb = color.match(/\w\w/g)?.map(x => parseInt(x, 16)).join(",") || "163,107,242";
-  document.documentElement.style.setProperty("--accent-rgb", rgb);
-}
+function setSchoolTheme(id){const c=schoolById(id)?.color||"#a36bf2";document.documentElement.style.setProperty("--accent",c);document.documentElement.style.setProperty("--accent-rgb",c.match(/\w\w/g)?.map(v=>parseInt(v,16)).join(",")||"163,107,242")}
+function iconStyle(i){if(!i||i.iconIndex==null)return"";const a=data.meta.itemAtlas,x=-(i.iconIndex%a.columns)*a.cell,y=-Math.floor(i.iconIndex/a.columns)*a.cell;return`background-image:url('${a.path}');background-size:${a.width}px ${a.height}px;background-position:${x}px ${y}px`}
+const itemIcon=(i,c="")=>`<span class="item-icon ${c}" style="${iconStyle(i)}" role="img" aria-label="${esc(localName(i))}"></span>`,schoolIcon=s=>itemIcon(itemById(s.symbolItem),"school-symbol");
+function renderNav(){$("#main-nav").innerHTML=routes.map(([id,ic],n)=>`<a class="nav-link ${route()===id?"active":""}" href="#${id}"><span class="nav-icon">${ic}</span>${t("nav")[n]}</a>`).join("");$("#global-search").placeholder=t("search");$("#theme-button").title=t("theme");$("#theme-button").textContent=colorTheme==="dark"?"☼":"☾";document.documentElement.lang=lang;document.documentElement.dataset.theme=colorTheme}
+const pageHeader=(e,h,p)=>`<header><div class="eyebrow">${esc(e)}</div><h1>${esc(h)}</h1><p class="lead">${esc(p)}</p></header>`;
+const options=(list,selected,all,value=x=>x,text=x=>x)=>`<option value="">${esc(all)}</option>${list.map(x=>`<option value="${esc(value(x))}" ${selected===value(x)?"selected":""}>${esc(text(x))}</option>`).join("")}`;
+function stats(){return`<div class="stats"><div class="stat"><strong>${data.schools.filter(s=>s.spellCount).length}</strong><span>${t("schools")}</span></div><div class="stat"><strong>${data.spells.length}</strong><span>${t("spells")}</span></div><div class="stat"><strong>${data.items.length.toLocaleString(lang)}</strong><span>${t("items")}</span></div><div class="stat"><strong>${data.mods.length}</strong><span>${t("mods")}</span></div></div>`}
+function schoolCards(list=data.schools.filter(s=>s.spellCount),selectable=false){return`<div class="grid schools">${list.map(s=>`<article class="card school-card ${build.schools.includes(s.id)?"selected":""}" style="--school:${s.color}" data-school="${s.id}" data-selectable="${selectable}" tabindex="0">${schoolIcon(s)}<h3>${esc(localName(s))}</h3><p>${s.spellCount} ${t("spells").toLowerCase()} · ${esc(s.theme[lang])}</p></article>`).join("")}</div>`}
+function homePage(){setSchoolTheme(build.schools[0]);return`<section class="hero"><div class="hero-content"><div class="eyebrow">${t("heroEyebrow")}</div><h1>${t("heroTitle")}</h1><p class="lead">${t("heroLead")}</p><div class="hero-actions"><a class="button primary" href="#build">${t("create")} →</a><a class="button ghost" href="#schools">${t("explore")}</a></div></div></section><div class="page">${stats()}<div class="section-head"><div><h2>${t("featured")}</h2><p>${t("featuredSub")}</p></div><a href="#schools">${t("seeAll")} →</a></div>${schoolCards(data.schools.filter(s=>s.spellCount).slice(0,10))}<div class="section-head"><div><h2>${t("provenance")}</h2><p>${t("defaultConfig")}</p></div></div><div class="notice">${t("translationNotice")}</div></div>`}
+function schoolsPage(){setSchoolTheme(params().get("school"));return`<div class="page">${pageHeader(t("nav")[1],t("featured"),t("featuredSub"))}${stats()}${schoolCards()}</div>`}
 
-function renderNav() {
-  $("#main-nav").innerHTML = routeDefs.map(([id, icon], index) => `<a class="nav-link ${route() === id ? "active" : ""}" href="#${id}"><span class="nav-icon">${icon}</span>${t("nav")[index]}</a>`).join("");
-  $("#global-search").placeholder = t("search");
-  document.documentElement.lang = lang;
-}
+function formula(m){return!m?"—":!m.perLevel?`${m.base}`:`${m.base} + ${m.perLevel} × (${lang==="fr"?"niv.":"lvl"}−1)`}
+const primaryMetric=s=>s.metrics?.find(m=>m.kind===s.powerMetric)||s.metrics?.find(m=>m.kind!=="mana");
+function spellRow(s,allowAdd=false){const school=schoolById(s.school),mana=s.metrics.find(m=>m.kind==="mana"),power=primaryMetric(s);return`<article class="catalog-row spell-row" style="--school:${school.color}"><div class="spell-main"><div class="row-badges"><span class="pill school" style="--school:${school.color}">${esc(localName(school))}</span><span class="pill">${esc(label(s.nature))}</span><span class="pill">${esc(label(s.delivery))}</span></div><h3>${esc(localName(s))}</h3><p>${esc(s.guide?.[lang]||s.guide?.en||s.id)}</p></div><div class="metric-cell"><small>${label("mana")}</small><strong>${formula(mana)}</strong><span>max ${mana.max}</span></div><div class="metric-cell"><small>${power?label(power.kind):t("power")}</small><strong>${power?formula(power):"—"}</strong><span>${power?`max ${power.max}${power.exact?"":"*"}`:"—"}</span></div><div class="row-actions"><button class="detail-button spell-details" data-spell="${s.id}">${t("details")} →</button>${allowAdd?`<button class="button compact spell-add" data-spell="${s.id}">${build.spells.includes(s.id)?"✓":`+ ${t("add")}`}</button>`:""}</div></article>`}
+function spellFilters(p){const ns=["offense","defense","summon","heal","control","mobility","utility"],ds=["projectile","target","area","static","self","summon","direct"];return`<div class="toolbar spell-toolbar"><input class="input filter" data-filter="q" value="${esc(p.get("q")||"")}" placeholder="${esc(t("search"))}"><select class="select filter" data-filter="school">${options(data.schools.filter(s=>s.spellCount),p.get("school")||"",t("allSchools"),s=>s.id,localName)}</select><select class="select filter" data-filter="nature">${options(ns,p.get("nature")||"",t("allNatures"),x=>x,label)}</select><select class="select filter" data-filter="delivery">${options(ds,p.get("delivery")||"",t("allDeliveries"),x=>x,label)}</select><select class="select filter" data-filter="mod">${options(data.mods,p.get("mod")||"",t("allMods"),m=>m.id,m=>m.name)}</select><select class="select filter" data-filter="rarity">${options(Object.keys(rarityRank).filter(x=>x!=="unknown"),p.get("rarity")||"",t("allRarities"),x=>x,slug)}</select><select class="select filter" data-filter="sort"><option value="name">${t("sort")} · A–Z</option><option value="power" ${p.get("sort")==="power"?"selected":""}>${t("sort")} · ${t("power")} ↓</option><option value="mana" ${p.get("sort")==="mana"?"selected":""}>${t("sort")} · ${t("mana")} ↑</option><option value="cooldown" ${p.get("sort")==="cooldown"?"selected":""}>${t("sort")} · ${t("cooldown")} ↑</option></select></div>`}
+function filteredSpells(p=params()){const q=(p.get("q")||"").toLowerCase(),f=data.spells.filter(s=>(!q||`${localName(s)} ${s.id} ${s.guide?.[lang]||s.guide?.en}`.toLowerCase().includes(q))&&(!p.get("school")||s.school===p.get("school"))&&(!p.get("nature")||s.nature===p.get("nature"))&&(!p.get("delivery")||s.delivery===p.get("delivery"))&&(!p.get("mod")||s.mod===p.get("mod"))&&(!p.get("rarity")||s.rarity===p.get("rarity"))),sort=p.get("sort")||"name";f.sort(sort==="power"?(a,b)=>b.primaryPower-a.primaryPower:sort==="mana"?(a,b)=>a.manaBase-b.manaBase:sort==="cooldown"?(a,b)=>a.cooldown-b.cooldown:(a,b)=>localName(a).localeCompare(localName(b),lang));return f}
+function spellResults(allowAdd=false){const f=filteredSpells();return`<div class="section-head"><span class="result-count">${f.length} ${t("results")}</span></div><div class="catalog-list">${f.slice(0,240).map(s=>spellRow(s,allowAdd)).join("")||`<div class="empty">${t("noResult")}</div>`}</div>${f.length>240?`<div class="notice">240 / ${f.length}</div>`:""}`}
+function spellsPage(){const p=params();setSchoolTheme(p.get("school")||build.schools[0]);return`<div class="page">${pageHeader(t("nav")[2],t("catalog"),t("catalogLead"))}<div class="notice formula-notice">${t("formulaHelp")}</div>${spellFilters(p)}<div id="live-results">${spellResults()}</div></div>`}
 
-function pageHeader(eyebrow, title, lead) {
-  return `<header><div class="eyebrow">${esc(eyebrow)}</div><h1>${esc(title)}</h1><p class="lead">${esc(lead)}</p></header>`;
-}
+function itemBadges(i){return`<div class="row-badges"><span class="pill">${esc(label(i.type))}</span>${i.affinities.slice(0,3).map(id=>`<span class="pill school" style="--school:${schoolById(id)?.color}">${esc(localName(schoolById(id)))}</span>`).join("")}</div>`}
+function innate(i){if(!i.innateSpells?.length)return"";return`<div class="innate-summary">${i.innateSpells.map(e=>{const s=data.spells.find(x=>x.id===e.spell);return`<span>${esc(localName(s))} ${e.level}${e.aboveMax?` <b>↑ ${t("aboveMax")}</b>`:""}</span>`}).join("")}</div>`}
+function itemCard(i,selectable=false){return`<article class="card item-card">${itemIcon(i)}<div class="item-card-body">${itemBadges(i)}<h3>${esc(localName(i))}</h3><p class="catalog-cell">${esc(modById(i.mod)?.name)}</p>${innate(i)}<div class="card-actions"><button class="detail-button item-details" data-item="${i.id}">${t("details")} →</button>${selectable?`<button class="button compact equip-item" data-item="${i.id}" data-slot="${i.type}">${t("equip")}</button>`:""}</div></div></article>`}
+function itemFilters(p,{type=true,school=true}={}){const types=["spellbook","curio","upgrade","item"];return`<div class="toolbar"><input class="input filter" data-filter="q" value="${esc(p.get("q")||"")}" placeholder="${esc(t("search"))}">${type?`<select class="select filter" data-filter="type">${options(types,p.get("type")||"",t("allTypes"),x=>x,label)}</select>`:""}${school?`<select class="select filter" data-filter="school">${options(data.schools.filter(s=>s.spellCount),p.get("school")||"",t("allSchools"),s=>s.id,localName)}</select>`:""}<select class="select filter" data-filter="mod">${options(data.mods,p.get("mod")||"",t("allMods"),m=>m.id,m=>m.name)}</select><select class="select filter" data-filter="sort"><option value="name">${t("sort")} · A–Z</option><option value="affinity" ${p.get("sort")==="affinity"?"selected":""}>${t("sort")} · ${t("recommended")}</option><option value="innate" ${p.get("sort")==="innate"?"selected":""}>${t("sort")} · ${t("innate")}</option></select></div>`}
+function filteredItems(kind=null,p=params()){const q=(p.get("q")||"").toLowerCase(),school=p.get("school")||"",f=data.items.filter(i=>(!kind||i.type===kind)&&(!q||`${localName(i)} ${i.id}`.toLowerCase().includes(q))&&(!p.get("type")||i.type===p.get("type"))&&(!school||i.affinities.includes(school))&&(!p.get("mod")||i.mod===p.get("mod"))),sort=p.get("sort")||"name";f.sort(sort==="innate"?(a,b)=>(b.innateSpells?.some(e=>e.aboveMax)?1:0)-(a.innateSpells?.some(e=>e.aboveMax)?1:0):sort==="affinity"?(a,b)=>b.affinities.length-a.affinities.length:(a,b)=>localName(a).localeCompare(localName(b),lang));return f}
+function itemResults(kind=null){const f=filteredItems(kind);return`<div class="section-head"><span class="result-count">${f.length} ${t("results")}</span></div><div class="grid item-grid">${f.slice(0,240).map(i=>itemCard(i)).join("")||`<div class="empty">${t("noResult")}</div>`}</div>${f.length>240?`<div class="notice">240 / ${f.length}</div>`:""}`}
+function itemsPage(kind=null){const p=params(),title=kind==="weapon"?t("weapons"):t("gear"),lead=kind==="weapon"?t("weaponsLead"):t("gearLead");return`<div class="page">${pageHeader(kind==="weapon"?t("nav")[4]:t("nav")[5],title,lead)}${itemFilters(p,{type:!kind,school:true})}<div id="live-results">${itemResults(kind)}</div></div>`}
 
-function stats() {
-  return `<div class="stats">
-    <div class="stat"><strong>${data.schools.filter(s => s.spellCount).length}</strong><span>${t("schools")}</span></div>
-    <div class="stat"><strong>${data.spells.length}</strong><span>${t("spells")}</span></div>
-    <div class="stat"><strong>${data.items.length.toLocaleString(lang)}</strong><span>${t("items")}</span></div>
-    <div class="stat"><strong>${data.mods.length}</strong><span>${t("mods")}</span></div>
-  </div>`;
-}
+function armorCard(s){const rep=Object.values(s.pieces).flat().map(itemById).find(Boolean);return`<article class="card armor-set-card">${itemIcon(rep,"armor-hero-icon")}<div>${s.affinities.map(id=>`<span class="pill school" style="--school:${schoolById(id)?.color}">${esc(localName(schoolById(id)))}</span>`).join("")}<h3>${esc(localName(s))}</h3><p class="catalog-cell">${s.pieceCount}/4 ${t("pieces")} · ${esc(modById(s.mod)?.name)}</p><div class="armor-slots">${Object.entries(s.pieces).map(([slot,ids])=>`<span title="${esc(label(slot))}">${ids.length?itemIcon(itemById(ids[0]),"mini"):`<i>—</i>`}${ids.length>1?`<b>+${ids.length-1}</b>`:""}</span>`).join("")}</div><button class="detail-button armor-details" data-set="${s.id}">${t("details")} →</button></div></article>`}
+function filteredArmor(p=params()){const q=(p.get("q")||"").toLowerCase(),f=data.armorSets.filter(s=>(!q||`${localName(s)} ${s.id}`.toLowerCase().includes(q))&&(!p.get("school")||s.affinities.includes(p.get("school")))&&(!p.get("mod")||s.mod===p.get("mod")));f.sort(p.get("sort")==="pieces"?(a,b)=>b.pieceCount-a.pieceCount:(a,b)=>localName(a).localeCompare(localName(b),lang));return f}
+function armorResults(){const f=filteredArmor();return`<div class="section-head"><span class="result-count">${f.length} ${t("results")}</span></div><div class="grid armor-grid">${f.slice(0,180).map(armorCard).join("")||`<div class="empty">${t("noResult")}</div>`}</div>`}
+function armorPage(){const p=params();return`<div class="page">${pageHeader(t("nav")[3],t("armor"),t("armorLead"))}<div class="toolbar"><input class="input filter" data-filter="q" value="${esc(p.get("q")||"")}" placeholder="${esc(t("search"))}"><select class="select filter" data-filter="school">${options(data.schools.filter(s=>s.spellCount),p.get("school")||"",t("allSchools"),s=>s.id,localName)}</select><select class="select filter" data-filter="mod">${options(data.mods,p.get("mod")||"",t("allMods"),m=>m.id,m=>m.name)}</select><select class="select filter" data-filter="sort"><option value="name">${t("sort")} · A–Z</option><option value="pieces" ${p.get("sort")==="pieces"?"selected":""}>${t("sort")} · 4/4</option></select></div><div id="live-results">${armorResults()}</div></div>`}
+function simpleResults(kind){const [list,field]=kind==="bestiary"?[data.entities,"kind"]:[data.structures,null],p=params(),q=(p.get("q")||"").toLowerCase(),f=list.filter(x=>(!q||`${localName(x)} ${x.id}`.toLowerCase().includes(q))&&(!p.get("mod")||x.mod===p.get("mod")));return`<div class="section-head"><span class="result-count">${f.length} ${t("results")}</span></div><div class="grid cards">${f.slice(0,240).map(x=>`<article class="card"><span class="pill">${esc(slug(x[field]||kind))}</span><h3>${esc(localName(x))}</h3><p class="catalog-cell">${esc(x.id)} · ${esc(modById(x.mod)?.name)}</p></article>`).join("")||`<div class="empty">${t("noResult")}</div>`}</div>`}
+function simplePage(kind){const title=kind==="bestiary"?t("bestiary"):t("structures"),lead=kind==="bestiary"?t("bestiaryLead"):t("structuresLead"),p=params();return`<div class="page">${pageHeader(title,title,lead)}<div class="toolbar"><input class="input filter" data-filter="q" value="${esc(p.get("q")||"")}" placeholder="${esc(t("search"))}"><select class="select filter" data-filter="mod">${options(data.mods,p.get("mod")||"",t("allMods"),m=>m.id,m=>m.name)}</select></div><div id="live-results">${simpleResults(kind)}</div></div>`}
 
-function schoolCards(list = data.schools.filter(s => s.spellCount), selectable = false) {
-  return `<div class="grid schools">${list.map(s => `<article class="card school-card ${build.schools.includes(s.id) ? "selected" : ""}" style="--school:${s.color}" data-school="${s.id}" data-selectable="${selectable}" data-rune="${esc(localName(s).slice(0,1))}" tabindex="0">
-    <div class="sigil"><span>${esc(localName(s).slice(0,1))}</span></div><h3>${esc(localName(s))}</h3>
-    <p>${s.spellCount} ${t("spells").toLowerCase()} · ${esc(s.theme[lang])}</p>
-  </article>`).join("")}</div>`;
-}
+function guideText(){if(!build.schools.length)return t("chooseSchool");const names=build.schools.map(id=>localName(schoolById(id)));return lang==="fr"?`${names.join(" + ")} construit un profil ${roleLabels[build.role]?.[0]?.toLowerCase()} ; les recommandations privilégient les affinités explicites, les sorts innés et les niveaux supérieurs au maximum normal.`:`${names.join(" + ")} creates a ${roleLabels[build.role]?.[1]?.toLowerCase()} profile; recommendations prioritize explicit affinities, innate spells and levels above the normal cap.`}
+function itemScore(i){const a=i.affinities.filter(id=>build.schools.includes(id)).length,inn=(i.innateSpells||[]).filter(e=>build.schools.includes(data.spells.find(s=>s.id===e.spell)?.school));return a*100+inn.length*45+inn.filter(e=>e.aboveMax).length*80+(i.iconAuthentic?1:0)}
+const recommendedItems=(types,n=6)=>data.items.filter(i=>types.includes(i.type)&&itemScore(i)>0).sort((a,b)=>itemScore(b)-itemScore(a)).slice(0,n);
+const recommendedArmor=()=>data.armorSets.filter(s=>s.affinities.some(id=>build.schools.includes(id))).sort((a,b)=>b.affinities.filter(id=>build.schools.includes(id)).length-a.affinities.filter(id=>build.schools.includes(id)).length||b.pieceCount-a.pieceCount).slice(0,6);
+const recGroup=(h,c)=>`<section class="recommendation-group"><div class="section-head"><h3>${esc(h)}</h3></div>${c||`<div class="empty">${t("noResult")}</div>`}</section>`;
+function buildPage(){setSchoolTheme(build.schools[0]);const rs=roleSchools[build.role]||[],schools=data.schools.filter(s=>s.spellCount&&(build.mode==="free"||rs.includes(s.id)||build.schools.includes(s.id))),available=data.spells.filter(s=>build.schools.includes(s.school)&&!s.deprecated).sort((a,b)=>b.primaryPower-a.primaryPower),selected=build.spells.map(id=>data.spells.find(s=>s.id===id)).filter(Boolean);const gear=build.schools.length?recGroup(t("weapons"),`<div class="grid compact-grid">${recommendedItems(["weapon"]).map(i=>itemCard(i,true)).join("")}</div>`)+recGroup(t("armor"),`<div class="grid compact-grid">${recommendedArmor().map(armorCard).join("")}</div>`)+recGroup(lang==="fr"?"Grimoires, curios et améliorations":"Spellbooks, curios and upgrades",`<div class="grid compact-grid">${recommendedItems(["spellbook","curio","upgrade"],9).map(i=>itemCard(i,true)).join("")}</div>`):`<div class="empty">${t("chooseSchool")}</div>`;return`<div class="page">${pageHeader(t("nav")[8],t("build"),t("buildLead"))}<div class="build-shell"><section class="build-panel"><div class="mode-tabs"><button class="mode-tab ${build.mode==="guided"?"active":""}" data-mode="guided">${t("guided")}</button><button class="mode-tab ${build.mode==="free"?"active":""}" data-mode="free">${t("free")}</button></div><div class="step"><div class="step-label">${t("role")}</div><div class="choice-grid">${Object.entries(roleLabels).map(([id,v])=>`<button class="choice ${build.role===id?"active":""}" data-role="${id}"><strong>${v[lang==="fr"?0:1]}</strong><small>${v[lang==="fr"?2:3]}</small></button>`).join("")}</div></div><div class="step"><div class="step-label">${t("schoolsPick")} · ${build.schools.length}/2</div>${schoolCards(schools,true)}</div><div class="step"><div class="step-label">${t("spellPick")} · ${selected.length}/10</div><div class="catalog-list">${available.slice(0,100).map(s=>spellRow(s,true)).join("")||`<div class="empty">${t("chooseSchool")}</div>`}</div></div><div class="step"><div class="step-label">${t("equipment")}</div>${gear}</div></section><aside class="build-panel sticky"><div class="eyebrow">${t("build")}</div><input class="input" id="build-name" value="${esc(build.name)}" placeholder="${t("buildName")}"><h2 class="build-title">${build.schools.map(id=>localName(schoolById(id))).join(" + ")||"—"}</h2><div class="progress"><span style="width:${Math.min(100,build.schools.length*25+selected.length*5)}%"></span></div><h3>${t("guideTitle")}</h3><p class="build-summary">${esc(guideText())}</p><div class="selected-spells">${selected.map(s=>`<div class="selected-spell" style="--school:${schoolById(s.school)?.color}"><span>${esc(localName(s))}</span><button data-remove-spell="${s.id}">×</button></div>`).join("")}</div><div class="selected-gear">${Object.values(build.gear||{}).map(itemById).filter(Boolean).map(i=>`<div>${itemIcon(i,"tiny")}<span>${esc(localName(i))}</span></div>`).join("")}</div><div class="hero-actions"><button class="button primary" id="recommend">${t("suggest")}</button><button class="button" id="save-build">${t("save")}</button><button class="button ghost" id="share-build">${t("share")}</button><button class="button ghost" id="reset-build">${t("reset")}</button></div></aside></div></div>`}
+function sourcesPage(){return`<div class="page">${pageHeader(t("nav")[9],t("sourceTitle"),t("sourceLead"))}<div class="notice">${t("translationNotice")}</div><div class="catalog-list sources-list">${data.mods.map(m=>`<article class="card source-row"><div><h3>${esc(m.name)}</h3><p class="catalog-cell">${esc(m.id)}</p></div><span class="pill">${esc(m.version)}</span><span class="source-status ${m.sourceStatus}">${t(m.sourceStatus==="exact"?"exact":m.sourceStatus==="jar-exact"?"jarExact":"jarOnly")}</span><div>${m.source?`<a class="detail-button" href="${esc(m.source)}" target="_blank" rel="noreferrer">${t("repository")} ↗</a>`:""} <a class="detail-button" href="${esc(m.page)}" target="_blank" rel="noreferrer">${t("officialPage")} ↗</a></div></article>`).join("")}</div></div>`}
+function searchPage(){const q=(params().get("q")||"").toLowerCase(),sp=data.spells.filter(x=>`${localName(x)} ${x.id}`.toLowerCase().includes(q)).slice(0,12),it=data.items.filter(x=>`${localName(x)} ${x.id}`.toLowerCase().includes(q)).slice(0,24);return`<div class="page">${pageHeader("⌕",t("searchTitle"),t("searchLead"))}<div class="section-head"><h2>${t("spells")}</h2></div><div class="catalog-list">${sp.map(s=>spellRow(s)).join("")}</div><div class="section-head"><h2>${t("items")}</h2></div><div class="grid item-grid">${it.map(i=>itemCard(i)).join("")}</div></div>`}
 
-function homePage() {
-  setTheme(build.schools[0]);
-  return `<section class="hero"><div class="hero-content"><div class="eyebrow">${t("heroEyebrow")}</div><h1>${t("heroTitle")}</h1><p class="lead">${t("heroLead")}</p><div class="hero-actions"><a class="button primary" href="#build">${t("create")} →</a><a class="button ghost" href="#schools">${t("explore")}</a></div></div></section>
-    <div class="page">${stats()}<div class="section-head"><div><h2>${t("featured")}</h2><p>${t("featuredSub")}</p></div><a href="#schools">${t("seeAll")} →</a></div>${schoolCards(data.schools.filter(s => s.spellCount).slice(0,10))}
-    <div class="section-head"><div><h2>${t("provenance")}</h2><p>${t("defaultConfig")}</p></div></div><div class="notice">${t("translationNotice")}</div></div>`;
-}
+function modal(content){const b=document.createElement("div"),m=document.createElement("article");b.className="modal-backdrop";m.className="modal-card";m.innerHTML=`${content}<button class="modal-close" aria-label="Close">×</button>`;document.body.append(b,m);const close=()=>{b.remove();m.remove()};b.onclick=close;$(".modal-close",m).onclick=close;return m}
+function showSpell(id){const s=data.spells.find(x=>x.id===id);if(!s)return;const school=schoolById(s.school),mod=modById(s.mod),metrics=s.metrics.map(m=>`<div><small>${esc(label(m.kind))}</small><strong>${formula(m)}</strong><span>max ${m.max}${m.exact?"":"*"}</span></div>`).join("");const node=modal(`<div class="modal-top"><div>${schoolIcon(school)}<span class="pill school" style="--school:${school.color}">${esc(localName(school))}</span><h2>${esc(localName(s))}</h2><p class="catalog-cell">${esc(s.id)} · ${esc(mod.name)}</p></div></div><div class="row-badges"><span class="pill">${label(s.nature)}</span><span class="pill">${label(s.delivery)}</span><span class="pill">${slug(s.rarity)}</span></div><div class="detail-grid"><div><small>${t("level")}</small><strong>${s.maxLevel}</strong></div><div><small>${t("cooldown")}</small><strong>${s.cooldown}s</strong></div><div><small>${t("cast")}</small><strong>${esc(slug(s.castType))}</strong></div>${metrics}</div><p class="guide">${esc(s.guide?.[lang]||s.guide?.en||"—")}</p>${s.metrics.some(m=>!m.exact)?`<p class="notice">* ${t("dataEstimate")}</p>`:""}<p class="formula-explain">${t("formulaHelp")}</p><a class="button ghost" href="${esc(mod.source||mod.page)}" target="_blank" rel="noreferrer">${t("source")} ↗</a>`);node.style.setProperty("--accent",school.color)}
+function acquisition(i){const recipes=i.recipes?.map(r=>`<div class="recipe"><strong>${esc(slug(r.type))}</strong><div class="ingredients">${r.ingredients.map(id=>{const ing=itemById(id);return`<span>${ing?itemIcon(ing,"tiny"):""}<code>${esc(id)}</code></span>`}).join("")}</div></div>`).join("")||"",loot=i.lootSources?.map(s=>`<li><code>${esc(s.replace(/^data\//,""))}</code></li>`).join("")||"";return`${recipes?`<h3>${t("recipes")}</h3>${recipes}`:""}${loot?`<h3>${t("loot")}</h3><ul>${loot}</ul>`:""}${!recipes&&!loot?`<div class="notice">${t("noRecipe")}</div>`:""}`}
+function showItem(id){const i=itemById(id);if(!i)return;const mod=modById(i.mod);modal(`<div class="item-modal-head">${itemIcon(i,"large")}<div>${itemBadges(i)}<h2>${esc(localName(i))}</h2><p class="catalog-cell">${esc(i.id)} · ${esc(mod.name)}</p></div></div>${i.innateSpells?.length?`<h3>${t("innate")}</h3>${innate(i)}`:""}${acquisition(i)}<a class="button ghost" href="${esc(mod.source||mod.page)}" target="_blank" rel="noreferrer">${t("source")} ↗</a>`)}
+function showArmor(id){const s=data.armorSets.find(x=>x.id===id);if(!s)return;const pieces=Object.entries(s.pieces).map(([slot,ids])=>`<section class="armor-piece-group"><h3>${esc(label(slot))}</h3><div class="grid item-grid">${ids.map(itemById).filter(Boolean).map(i=>itemCard(i)).join("")||`<div class="empty">—</div>`}</div></section>`).join(""),node=modal(`<h2>${esc(localName(s))}</h2><p class="catalog-cell">${esc(modById(s.mod)?.name)} · ${s.pieceCount}/4 ${t("pieces")}</p>${pieces}`);$$(".item-details",node).forEach(b=>b.onclick=()=>showItem(b.dataset.item))}
 
-function schoolsPage() {
-  setTheme(paramsForHash().get("school"));
-  return `<div class="page">${pageHeader(t("nav")[1], t("featured"), t("featuredSub"))}${stats()}${schoolCards()}</div>`;
-}
-
-function options(list, selected, allLabel, value = x => x, label = x => x) {
-  return `<option value="">${esc(allLabel)}</option>${list.map(x => `<option value="${esc(value(x))}" ${selected === value(x) ? "selected" : ""}>${esc(label(x))}</option>`).join("")}`;
-}
-
-function spellRow(spell, allowAdd = false) {
-  const school = schoolById(spell.school);
-  return `<article class="catalog-row" style="--school:${school.color}"><div><h3>${esc(localName(spell))}</h3><p>${esc(spell.guide?.[lang] || spell.guide?.en || spell.id)}</p></div><div class="catalog-cell"><span class="pill school" style="--school:${school.color}">${esc(localName(school))}</span></div><div class="catalog-cell">${esc(slugName(spell.rarity))} · ${spell.maxLevel}</div><div class="catalog-cell">${spell.manaBase} + ${spell.manaPerLevel}/lvl</div><button class="detail-button" data-spell="${spell.id}" ${allowAdd ? 'data-add="true"' : ""}>${allowAdd ? (build.spells.includes(spell.id) ? "✓" : `+ ${t("add")}`) : `${t("details")} →`}</button></article>`;
-}
-
-function spellsPage() {
-  const p = paramsForHash();
-  const q = p.get("q") || ""; const school = p.get("school") || ""; const mod = p.get("mod") || ""; const rarity = p.get("rarity") || "";
-  if (school) setTheme(school); else setTheme(build.schools[0]);
-  const filtered = data.spells.filter(s => (!q || `${localName(s)} ${s.id} ${s.guide?.[lang] || s.guide?.en}`.toLowerCase().includes(q.toLowerCase())) && (!school || s.school === school) && (!mod || s.mod === mod) && (!rarity || s.rarity === rarity));
-  return `<div class="page">${pageHeader(t("nav")[2], t("catalog"), t("catalogLead"))}
-    <div class="toolbar"><input class="input filter" data-filter="q" value="${esc(q)}" placeholder="${esc(t("search"))}"><select class="select filter" data-filter="school">${options(data.schools.filter(s => s.spellCount), school, t("allSchools"), s => s.id, localName)}</select><select class="select filter" data-filter="mod">${options(data.mods, mod, t("allMods"), m => m.id, m => m.name)}</select><select class="select filter" data-filter="rarity">${options(Object.keys(rarityRank).filter(r => r !== "unknown"), rarity, t("allRarities"), x => x, slugName)}</select></div>
-    <div class="section-head"><span class="result-count">${filtered.length} ${t("results")}</span></div><div class="catalog-list">${filtered.slice(0,150).map(s => spellRow(s)).join("") || `<div class="empty">${t("noResult")}</div>`}</div>${filtered.length > 150 ? `<div class="notice">150 / ${filtered.length} — affinez les filtres pour voir les autres résultats.</div>` : ""}</div>`;
-}
-
-function catalogPage(kind) {
-  const configs = {
-    gear: [data.items, t("gear"), t("gearLead"), "type", ["armor", "weapon", "spellbook", "curio", "item"]],
-    bestiary: [data.entities, t("bestiary"), t("bestiaryLead"), "kind", ["mob", "summon", "spell_entity"]],
-    structures: [data.structures, t("structures"), t("structuresLead"), null, []]
-  };
-  const [list, title, lead, field, types] = configs[kind]; const p = paramsForHash(); const q = p.get("q") || ""; const type = p.get("type") || ""; const mod = p.get("mod") || "";
-  const filtered = list.filter(x => (!q || `${localName(x)} ${x.id}`.toLowerCase().includes(q.toLowerCase())) && (!type || x[field] === type) && (!mod || x.mod === mod));
-  return `<div class="page">${pageHeader(t("nav")[routeDefs.findIndex(x => x[0] === kind)], title, lead)}<div class="toolbar"><input class="input filter" data-filter="q" value="${esc(q)}" placeholder="${esc(t("search"))}">${field ? `<select class="select filter" data-filter="type">${options(types, type, t("allTypes"), x => x, slugName)}</select>` : ""}<select class="select filter" data-filter="mod">${options(data.mods, mod, t("allMods"), m => m.id, m => m.name)}</select></div><div class="section-head"><span class="result-count">${filtered.length} ${t("results")}</span></div><div class="grid cards">${filtered.slice(0,180).map(x => `<article class="card"><span class="pill">${esc(slugName(x[field] || kind))}</span><h3 style="margin-top:.75rem">${esc(localName(x))}</h3><p class="catalog-cell">${esc(modById(x.mod)?.name)} · ${esc(x.id)}</p>${x.acquisition ? `<p class="catalog-cell">${t(`acquisition_${x.acquisition}`)}</p>` : ""}</article>`).join("") || `<div class="empty">${t("noResult")}</div>`}</div></div>`;
-}
-
-function sourcesPage() {
-  return `<div class="page">${pageHeader(t("nav")[7], t("sourceTitle"), t("sourceLead"))}<div class="notice">${t("translationNotice")}</div><div class="catalog-list" style="margin-top:1rem">${data.mods.map(mod => `<article class="card source-row"><div><h3>${esc(mod.name)}</h3><p class="catalog-cell">${esc(mod.id)}</p></div><span class="pill">${esc(mod.version)}</span><span class="source-status ${mod.sourceStatus}">${t(mod.sourceStatus === "exact" ? "exact" : mod.sourceStatus === "jar-exact" ? "jarExact" : "jarOnly")}</span><div>${mod.source ? `<a class="detail-button" href="${esc(mod.source)}" target="_blank" rel="noreferrer">${t("repository")} ↗</a>` : ""} <a class="detail-button" href="${esc(mod.page)}" target="_blank" rel="noreferrer">${t("officialPage")} ↗</a></div></article>`).join("")}</div></div>`;
-}
-
-function guideText() {
-  if (!build.schools.length) return t("chooseSchool");
-  const names = build.schools.map(id => localName(schoolById(id)));
-  const themes = build.schools.map(id => schoolById(id).theme[lang]);
-  return lang === "fr"
-    ? `${names.join(" + ")} construit un profil ${roleLabels[build.role]?.[0]?.toLowerCase() || "personnalisé"} autour de ${themes.join(" et de ")}. La sélection favorise des temps de recharge complémentaires et plusieurs niveaux de rareté.`
-    : `${names.join(" + ")} creates a ${roleLabels[build.role]?.[1]?.toLowerCase() || "custom"} profile around ${themes.join(" and ")}. The selection favors complementary cooldowns and multiple rarity tiers.`;
-}
-
-function gearSelect(slot, label, items) {
-  const selected = build.gear[slot] || "";
-  return `<label class="catalog-cell">${esc(label)}<select class="select gear-select" data-slot="${slot}"><option value="">—</option>${items.map(item => `<option value="${item.id}" ${selected === item.id ? "selected" : ""}>${esc(localName(item))} · ${esc(modById(item.mod)?.name)}</option>`).join("")}</select></label>`;
-}
-
-function buildPage() {
-  setTheme(build.schools[0]);
-  const recommendedSchools = roleSchools[build.role] || [];
-  const schoolList = data.schools.filter(s => s.spellCount && (build.mode === "free" || recommendedSchools.includes(s.id) || build.schools.includes(s.id)));
-  const available = data.spells.filter(s => build.schools.includes(s.school) && !s.deprecated).sort((a,b) => rarityRank[a.rarity] - rarityRank[b.rarity] || a.cooldown - b.cooldown);
-  const selectedSpells = build.spells.map(id => data.spells.find(s => s.id === id)).filter(Boolean);
-  const armor = data.items.filter(i => i.type === "armor"); const weapons = data.items.filter(i => i.type === "weapon"); const curios = data.items.filter(i => i.type === "curio");
-  return `<div class="page">${pageHeader(t("nav")[6], t("build"), t("buildLead"))}<div class="build-shell"><section class="build-panel"><div class="mode-tabs"><button class="mode-tab ${build.mode === "guided" ? "active" : ""}" data-mode="guided">${t("guided")}</button><button class="mode-tab ${build.mode === "free" ? "active" : ""}" data-mode="free">${t("free")}</button></div>
-    <div class="step"><div class="step-label">${t("role")}</div><div class="choice-grid">${Object.entries(roleLabels).map(([id, label]) => `<button class="choice ${build.role === id ? "active" : ""}" data-role="${id}"><strong>${label[lang === "fr" ? 0 : 1]}</strong><small>${label[lang === "fr" ? 2 : 3]}</small></button>`).join("")}</div></div>
-    <div class="step"><div class="step-label">${t("schoolsPick")} · ${build.schools.length}/2</div>${schoolCards(schoolList, true)}</div>
-    <div class="step"><div class="step-label">${t("spellPick")} · ${selectedSpells.length}/10</div><div class="catalog-list">${available.slice(0,80).map(s => spellRow(s, true)).join("") || `<div class="empty">${t("chooseSchool")}</div>`}</div></div>
-    <div class="step"><div class="step-label">${t("equipment")}</div><div class="grid cards">${gearSelect("weapon", lang === "fr" ? "Arme" : "Weapon", weapons)}${gearSelect("helmet", lang === "fr" ? "Casque" : "Helmet", armor.filter(i => i.id.endsWith("helmet")))}${gearSelect("chestplate", lang === "fr" ? "Plastron" : "Chestplate", armor.filter(i => i.id.endsWith("chestplate")))}${gearSelect("leggings", lang === "fr" ? "Jambières" : "Leggings", armor.filter(i => i.id.endsWith("leggings")))}${gearSelect("boots", lang === "fr" ? "Bottes" : "Boots", armor.filter(i => i.id.endsWith("boots")))}${gearSelect("curio", "Curio", curios)}</div></div>
-    </section><aside class="build-panel sticky"><div class="eyebrow">${t("build")}</div><input class="input" id="build-name" value="${esc(build.name)}" placeholder="${t("buildName")}" style="margin:.75rem 0"><h2 class="build-title">${build.schools.map(id => localName(schoolById(id))).join(" + ") || "—"}</h2><div class="progress"><span style="width:${Math.min(100, build.schools.length * 25 + selectedSpells.length * 5)}%"></span></div><h3>${t("guideTitle")}</h3><p class="build-summary">${esc(guideText())}</p><div class="selected-spells">${selectedSpells.map(s => `<div class="selected-spell" style="--school:${schoolById(s.school).color}"><span>${esc(localName(s))}</span><button data-remove-spell="${s.id}">×</button></div>`).join("")}</div><div class="hero-actions"><button class="button primary" id="recommend">${t("suggest")}</button><button class="button" id="save-build">${t("save")}</button><button class="button ghost" id="share-build">${t("share")}</button><button class="button ghost" id="reset-build">${t("reset")}</button></div></aside></div></div>`;
-}
-
-function searchPage() {
-  const q = paramsForHash().get("q") || ""; const normalized = q.toLowerCase();
-  const groups = [
-    [t("spells"), data.spells.filter(x => `${localName(x)} ${x.id}`.toLowerCase().includes(normalized)).slice(0,12)],
-    [t("items"), data.items.filter(x => `${localName(x)} ${x.id}`.toLowerCase().includes(normalized)).slice(0,12)],
-    [t("bestiary"), data.entities.filter(x => `${localName(x)} ${x.id}`.toLowerCase().includes(normalized)).slice(0,12)],
-    [t("structures"), data.structures.filter(x => `${localName(x)} ${x.id}`.toLowerCase().includes(normalized)).slice(0,12)]
-  ];
-  return `<div class="page">${pageHeader("⌕", t("searchTitle"), t("searchLead"))}${groups.map(([title, list]) => `<div class="section-head"><h2>${title}</h2><span class="result-count">${list.length}</span></div><div class="grid cards">${list.map(x => `<article class="card"><h3>${esc(localName(x))}</h3><p class="catalog-cell">${esc(x.id)} · ${esc(modById(x.mod)?.name)}</p></article>`).join("") || `<div class="empty">${t("noResult")}</div>`}</div>`).join("")}</div>`;
-}
-
-function showSpell(id) {
-  const spell = data.spells.find(s => s.id === id); if (!spell) return;
-  const school = schoolById(spell.school); const mod = modById(spell.mod);
-  const backdrop = document.createElement("div"); backdrop.className = "modal-backdrop";
-  const modal = document.createElement("article"); modal.className = "modal-card"; modal.style.setProperty("--accent", school.color);
-  modal.innerHTML = `<div class="modal-top"><div><span class="pill school" style="--school:${school.color}">${esc(localName(school))}</span><h2 style="margin-top:.7rem">${esc(localName(spell))}</h2><p class="catalog-cell">${esc(spell.id)} · ${esc(mod.name)}</p></div><button aria-label="Close">×</button></div><div class="detail-grid"><div><small>${t("level")}</small><strong>${spell.maxLevel}</strong></div><div><small>${t("cooldown")}</small><strong>${spell.cooldown}s</strong></div><div><small>${t("mana")}</small><strong>${spell.manaBase}</strong></div><div><small>${t("cast")}</small><strong>${esc(slugName(spell.castType))}</strong></div><div><small>${t("acquisition")}</small><strong>${t(`acquisition_${spell.acquisition}`)}</strong></div><div><small>Rareté</small><strong>${esc(slugName(spell.rarity))}</strong></div></div><p class="guide">${esc(spell.guide?.[lang] || spell.guide?.en || "—")}</p><a class="button ghost" href="${esc(mod.source || mod.page)}" target="_blank" rel="noreferrer">${t("source")} ↗</a>`;
-  document.body.append(backdrop, modal); const close = () => { backdrop.remove(); modal.remove(); }; backdrop.onclick = close; $("button", modal).onclick = close;
-}
-
-function saveBuild() { localStorage.setItem("irons-wiki-build", JSON.stringify(build)); toast(t("saved")); }
-function recommendBuild() {
-  if (!build.schools.length) build.schools = (roleSchools[build.role] || []).slice(0,2);
-  const candidates = data.spells.filter(s => build.schools.includes(s.school) && !s.deprecated && s.id !== "irons_spellbooks:none");
-  const bySchool = build.schools.flatMap(id => candidates.filter(s => s.school === id).sort((a,b) => a.cooldown - b.cooldown || rarityRank[a.rarity] - rarityRank[b.rarity]).slice(0,5));
-  build.spells = [...new Set(bySchool.map(s => s.id))].slice(0,10); saveBuild(); render();
-}
-function shareBuild() {
-  const payload = btoa(unescape(encodeURIComponent(JSON.stringify(build))));
-  const url = `${location.origin}${location.pathname}#build?setup=${encodeURIComponent(payload)}`;
-  navigator.clipboard.writeText(url).then(() => toast(t("copied")));
-}
-function toast(message) { const node = $("#toast"); node.textContent = message; node.classList.add("show"); clearTimeout(toast.timer); toast.timer = setTimeout(() => node.classList.remove("show"), 1800); }
-
-function bind() {
-  $$(".school-card").forEach(card => {
-    const activate = () => {
-      const id = card.dataset.school;
-      if (card.dataset.selectable === "true") {
-        if (build.schools.includes(id)) { build.schools = build.schools.filter(x => x !== id); build.spells = build.spells.filter(spellId => { const spell = data.spells.find(s => s.id === spellId); return spell && build.schools.includes(spell.school); }); }
-        else if (build.schools.length < 2) build.schools.push(id); else return toast(t("maxSchools"));
-        render();
-      } else location.hash = `spells?school=${id}`;
-    };
-    card.onclick = activate; card.onkeydown = e => { if (e.key === "Enter" || e.key === " ") activate(); };
-  });
-  $$(".filter").forEach(input => input.onchange = input.oninput = () => {
-    const p = paramsForHash(); input.value ? p.set(input.dataset.filter, input.value) : p.delete(input.dataset.filter);
-    clearTimeout(input._timer); input._timer = setTimeout(() => { location.hash = `${route()}?${p}`; render(); }, input.tagName === "INPUT" ? 160 : 0);
-  });
-  $$('[data-spell]').forEach(button => button.onclick = () => {
-    if (button.dataset.add) {
-      const id = button.dataset.spell;
-      build.spells = build.spells.includes(id) ? build.spells.filter(x => x !== id) : build.spells.length < 10 ? [...build.spells, id] : build.spells;
-      render();
-    } else showSpell(button.dataset.spell);
-  });
-  $$('[data-remove-spell]').forEach(button => button.onclick = () => { build.spells = build.spells.filter(x => x !== button.dataset.removeSpell); render(); });
-  $$('[data-mode]').forEach(button => button.onclick = () => { build.mode = button.dataset.mode; render(); });
-  $$('[data-role]').forEach(button => button.onclick = () => { build.role = button.dataset.role; if (build.mode === "guided") build.schools = []; build.spells = []; render(); });
-  $$(".gear-select").forEach(select => select.onchange = () => { build.gear[select.dataset.slot] = select.value; });
-  if ($("#build-name")) $("#build-name").oninput = e => build.name = e.target.value;
-  if ($("#recommend")) $("#recommend").onclick = recommendBuild;
-  if ($("#save-build")) $("#save-build").onclick = saveBuild;
-  if ($("#share-build")) $("#share-build").onclick = shareBuild;
-  if ($("#reset-build")) $("#reset-build").onclick = () => { build = { mode: "guided", role: "battlemage", schools: [], spells: [], gear: {}, name: "" }; saveBuild(); render(); };
-}
-
-function loadSharedBuild() {
-  const setup = paramsForHash().get("setup"); if (!setup) return;
-  try { build = JSON.parse(decodeURIComponent(escape(atob(setup)))); history.replaceState(null, "", "#build"); } catch { /* malformed links are ignored */ }
-}
-
-function render() {
-  loadSharedBuild(); renderNav();
-  const pages = { home: homePage, schools: schoolsPage, spells: spellsPage, gear: () => catalogPage("gear"), bestiary: () => catalogPage("bestiary"), structures: () => catalogPage("structures"), build: buildPage, sources: sourcesPage, search: searchPage };
-  $("#content").innerHTML = (pages[route()] || homePage)(); bind(); window.scrollTo({ top: 0, behavior: "instant" });
-}
-
-async function init() {
-  data = await fetch("./data/content.json").then(response => { if (!response.ok) throw new Error(response.statusText); return response.json(); });
-  $("#language-button").onclick = () => { lang = lang === "fr" ? "en" : "fr"; localStorage.setItem("irons-wiki-lang", lang); render(); };
-  $("#menu-button").onclick = () => $("#sidebar").classList.toggle("open");
-  $("#global-search").onkeydown = event => { if (event.key === "Enter" && event.target.value.trim()) location.hash = `search?q=${encodeURIComponent(event.target.value.trim())}`; };
-  document.addEventListener("keydown", event => { if (event.key === "/" && document.activeElement?.tagName !== "INPUT") { event.preventDefault(); $("#global-search").focus(); } });
-  window.addEventListener("hashchange", () => { $("#sidebar").classList.remove("open"); render(); });
-  render();
-}
-
-init().catch(error => { $("#content").innerHTML = `<div class="page"><h1>Impossible de charger le grimoire</h1><p class="lead">${esc(error.message)}</p></div>`; });
+function saveBuild(){localStorage.setItem("irons-wiki-build",JSON.stringify(build));toast(t("saved"))}
+function recommend(){if(!build.schools.length)build.schools=(roleSchools[build.role]||[]).slice(0,2);const c=data.spells.filter(s=>build.schools.includes(s.school)&&!s.deprecated);build.spells=[...new Set(build.schools.flatMap(id=>c.filter(s=>s.school===id).sort((a,b)=>b.primaryPower-a.primaryPower||a.cooldown-b.cooldown).slice(0,5)).map(s=>s.id))].slice(0,10);const picks=[...recommendedItems(["weapon"],1),...recommendedItems(["spellbook"],1),...recommendedItems(["curio"],1),...recommendedItems(["upgrade"],1)];build.gear=Object.fromEntries(picks.map(i=>[i.type,i.id]));saveBuild();render(false)}
+function share(){const p=btoa(unescape(encodeURIComponent(JSON.stringify(build))));navigator.clipboard.writeText(`${location.origin}${location.pathname}#build?setup=${encodeURIComponent(p)}`).then(()=>toast(t("copied")))}
+function toast(msg){const n=$("#toast");n.textContent=msg;n.classList.add("show");clearTimeout(toast.timer);toast.timer=setTimeout(()=>n.classList.remove("show"),1800)}
+function updateParam(c){const p=params();c.value?p.set(c.dataset.filter,c.value):p.delete(c.dataset.filter);history.replaceState(null,"",`#${route()}${p.size?`?${p}`:""}`)}
+function refresh(){const n=$("#live-results");if(!n)return;const r=route();n.innerHTML=r==="spells"?spellResults():r==="armor"?armorResults():r==="weapons"?itemResults("weapon"):r==="bestiary"||r==="structures"?simpleResults(r):itemResults();bindActions(n)}
+function bindActions(root=document){$$(".spell-details",root).forEach(b=>b.onclick=()=>showSpell(b.dataset.spell));$$(".spell-add",root).forEach(b=>b.onclick=()=>{const id=b.dataset.spell;build.spells=build.spells.includes(id)?build.spells.filter(x=>x!==id):build.spells.length<10?[...build.spells,id]:build.spells;render(false)});$$(".item-details",root).forEach(b=>b.onclick=()=>showItem(b.dataset.item));$$(".armor-details",root).forEach(b=>b.onclick=()=>showArmor(b.dataset.set));$$(".equip-item",root).forEach(b=>b.onclick=()=>{const i=itemById(b.dataset.item);build.gear[b.dataset.slot]=i.id;saveBuild();render(false)})}
+function bind(){$$(".school-card").forEach(c=>{const go=()=>{const id=c.dataset.school;if(c.dataset.selectable==="true"){if(build.schools.includes(id)){build.schools=build.schools.filter(x=>x!==id);build.spells=build.spells.filter(sid=>build.schools.includes(data.spells.find(s=>s.id===sid)?.school))}else if(build.schools.length<2)build.schools.push(id);else return toast(t("maxSchools"));render(false)}else location.hash=`spells?school=${id}`};c.onclick=go;c.onkeydown=e=>{if(["Enter"," "].includes(e.key))go()}});$$(".filter").forEach(c=>{const h=()=>{updateParam(c);refresh()};c.onchange=h;if(c.tagName==="INPUT")c.oninput=h});bindActions();$$('[data-remove-spell]').forEach(b=>b.onclick=()=>{build.spells=build.spells.filter(id=>id!==b.dataset.removeSpell);render(false)});$$('[data-mode]').forEach(b=>b.onclick=()=>{build.mode=b.dataset.mode;render(false)});$$('[data-role]').forEach(b=>b.onclick=()=>{build.role=b.dataset.role;if(build.mode==="guided"){build.schools=[];build.spells=[]}render(false)});if($("#build-name"))$("#build-name").oninput=e=>build.name=e.target.value;if($("#recommend"))$("#recommend").onclick=recommend;if($("#save-build"))$("#save-build").onclick=saveBuild;if($("#share-build"))$("#share-build").onclick=share;if($("#reset-build"))$("#reset-build").onclick=()=>{build={mode:"guided",role:"battlemage",schools:[],spells:[],gear:{},name:""};saveBuild();render(false)}}
+function loadShared(){const s=params().get("setup");if(!s)return;try{build=JSON.parse(decodeURIComponent(escape(atob(s))));history.replaceState(null,"","#build")}catch{}}
+function render(scroll=true){loadShared();renderNav();const pages={home:homePage,schools:schoolsPage,spells:spellsPage,armor:armorPage,weapons:()=>itemsPage("weapon"),items:()=>itemsPage(),gear:()=>itemsPage(),bestiary:()=>simplePage("bestiary"),structures:()=>simplePage("structures"),build:buildPage,sources:sourcesPage,search:searchPage};$("#content").innerHTML=(pages[route()]||homePage)();bind();if(scroll)window.scrollTo({top:0,behavior:"instant"})}
+async function init(){data=await fetch("./data/content.json").then(r=>{if(!r.ok)throw Error(r.statusText);return r.json()});$("#language-button").onclick=()=>{lang=lang==="fr"?"en":"fr";localStorage.setItem("irons-wiki-lang",lang);render(false)};$("#theme-button").onclick=()=>{colorTheme=colorTheme==="dark"?"light":"dark";localStorage.setItem("irons-wiki-theme",colorTheme);renderNav()};$("#menu-button").onclick=()=>$("#sidebar").classList.toggle("open");$("#global-search").onkeydown=e=>{if(e.key==="Enter"&&e.target.value.trim())location.hash=`search?q=${encodeURIComponent(e.target.value.trim())}`};document.addEventListener("keydown",e=>{if(e.key==="/"&&!['INPUT','SELECT','TEXTAREA'].includes(document.activeElement?.tagName)){e.preventDefault();$("#global-search").focus()}});window.addEventListener("hashchange",()=>{$("#sidebar").classList.remove("open");render()});render()}
+init().catch(e=>{$("#content").innerHTML=`<div class="page"><h1>Impossible de charger le grimoire</h1><p class="lead">${esc(e.message)}</p></div>`});

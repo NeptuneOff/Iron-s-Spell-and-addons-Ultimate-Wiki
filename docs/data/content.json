@@ -3,7 +3,7 @@
     "minecraft": "1.21.1",
     "loader": "NeoForge 21.1.250",
     "configs": "default",
-    "generatedAt": "2026-09-22T06:35:00.075Z",
+    "generatedAt": "2026-09-22T06:39:19.801Z",
     "schema": 1,
     "itemAtlas": {
       "path": "./assets/item-icons.webp",
@@ -240,7 +240,7 @@
         "fr": "abîme",
         "en": "abyss"
       },
-      "symbolItem": "discerning_the_eldritch:eldritch_rune",
+      "symbolItem": "discerning_the_eldritch:eldritch_upgrade_orb",
       "spellCount": 22
     },
     {
@@ -16135,12 +16135,12 @@
     {
       "id": "irons_spellbooks:cultist_chestplate",
       "mod": "irons_spellbooks",
-      "type": "item",
-      "slot": null,
+      "type": "armor",
+      "slot": "chestplate",
       "affinities": [
         "blood"
       ],
-      "setKey": null,
+      "setKey": "cultist",
       "name": {
         "en": "Cultist Armor",
         "fr": "Cultist Armor"
@@ -16547,13 +16547,13 @@
     {
       "id": "irons_spellbooks:shadowwalker_chestplate",
       "mod": "irons_spellbooks",
-      "type": "item",
-      "slot": null,
+      "type": "armor",
+      "slot": "chestplate",
       "affinities": [
         "shadow",
         "ender"
       ],
-      "setKey": null,
+      "setKey": "shadowwalker",
       "name": {
         "en": "Shadow-Walker Armor",
         "fr": "Shadow-Walker Armor"
@@ -19881,10 +19881,10 @@
     {
       "id": "irons_spellbooks:speed_boots",
       "mod": "irons_spellbooks",
-      "type": "item",
-      "slot": null,
+      "type": "armor",
+      "slot": "boots",
       "affinities": [],
-      "setKey": null,
+      "setKey": "speed",
       "name": {
         "en": "Boots of Speed",
         "fr": "Boots of Speed"
@@ -22562,10 +22562,10 @@
     {
       "id": "cataclysm_spellbooks:cursium_mage_chestplate",
       "mod": "cataclysm_spellbooks",
-      "type": "item",
-      "slot": null,
+      "type": "armor",
+      "slot": "chestplate",
       "affinities": [],
-      "setKey": null,
+      "setKey": "cursium_mage",
       "name": {
         "en": "Cursium Mage Breastplate",
         "fr": "Cursium Mage Breastplate"
@@ -22693,12 +22693,12 @@
     {
       "id": "cataclysm_spellbooks:pharaoh_chestplate",
       "mod": "cataclysm_spellbooks",
-      "type": "item",
-      "slot": null,
+      "type": "armor",
+      "slot": "chestplate",
       "affinities": [
         "holy"
       ],
-      "setKey": null,
+      "setKey": "pharaoh",
       "name": {
         "en": "Pharaoh Sacred Hauberk",
         "fr": "Pharaoh Sacred Hauberk"
@@ -22857,7 +22857,7 @@
       "id": "cataclysm_spellbooks:bloom_stone_greaves",
       "mod": "cataclysm_spellbooks",
       "type": "armor",
-      "slot": "boots",
+      "slot": "leggings",
       "affinities": [],
       "setKey": "bloom_stone",
       "name": {
@@ -24645,12 +24645,12 @@
     {
       "id": "discerning_the_eldritch:eldritch_warlock_leggings",
       "mod": "discerning_the_eldritch",
-      "type": "item",
-      "slot": null,
+      "type": "armor",
+      "slot": "leggings",
       "affinities": [
         "eldritch"
       ],
-      "setKey": null,
+      "setKey": "eldritch_warlock",
       "name": {
         "en": "Apothic Acolyte Breeches",
         "fr": "Apothic Acolyte Breeches"
@@ -24787,10 +24787,10 @@
     {
       "id": "discerning_the_eldritch:crimson_stag_leggings",
       "mod": "discerning_the_eldritch",
-      "type": "item",
-      "slot": null,
+      "type": "armor",
+      "slot": "leggings",
       "affinities": [],
-      "setKey": null,
+      "setKey": "crimson_stag",
       "name": {
         "en": "Crimson Stag Breeches",
         "fr": "Crimson Stag Breeches"
@@ -24804,10 +24804,10 @@
     {
       "id": "discerning_the_eldritch:crimson_stag_boots",
       "mod": "discerning_the_eldritch",
-      "type": "item",
-      "slot": null,
+      "type": "armor",
+      "slot": "boots",
       "affinities": [],
-      "setKey": null,
+      "setKey": "crimson_stag",
       "name": {
         "en": "Crimson Stag Tabi",
         "fr": "Crimson Stag Tabi"
@@ -30487,12 +30487,12 @@
     {
       "id": "hazennstuff:geckolib_seraph_chestplate",
       "mod": "hazennstuff",
-      "type": "item",
-      "slot": null,
+      "type": "armor",
+      "slot": "chestplate",
       "affinities": [
         "radiance"
       ],
-      "setKey": null,
+      "setKey": "geckolib_seraph",
       "name": {
         "en": "Seraph Breastplate",
         "fr": "Seraph Breastplate"
@@ -30525,12 +30525,12 @@
     {
       "id": "hazennstuff:geckolib_seraph_boots",
       "mod": "hazennstuff",
-      "type": "item",
-      "slot": null,
+      "type": "armor",
+      "slot": "boots",
       "affinities": [
         "radiance"
       ],
-      "setKey": null,
+      "setKey": "geckolib_seraph",
       "name": {
         "en": "Seraph Tracers",
         "fr": "Seraph Tracers"
@@ -30561,10 +30561,10 @@
     {
       "id": "hazennstuff:geckolib_charged_scourge_chestplate",
       "mod": "hazennstuff",
-      "type": "item",
-      "slot": null,
+      "type": "armor",
+      "slot": "chestplate",
       "affinities": [],
-      "setKey": null,
+      "setKey": "geckolib_charged_scourge",
       "name": {
         "en": "Scourge Scale Mail",
         "fr": "Scourge Scale Mail"
@@ -30578,10 +30578,10 @@
     {
       "id": "hazennstuff:geckolib_charged_scourge_leggings",
       "mod": "hazennstuff",
-      "type": "item",
-      "slot": null,
+      "type": "armor",
+      "slot": "leggings",
       "affinities": [],
-      "setKey": null,
+      "setKey": "geckolib_charged_scourge",
       "name": {
         "en": "Scourge Kneepads",
         "fr": "Scourge Kneepads"
@@ -30595,10 +30595,10 @@
     {
       "id": "hazennstuff:geckolib_charged_scourge_boots",
       "mod": "hazennstuff",
-      "type": "item",
-      "slot": null,
+      "type": "armor",
+      "slot": "boots",
       "affinities": [],
-      "setKey": null,
+      "setKey": "geckolib_charged_scourge",
       "name": {
         "en": "Scourge Treads",
         "fr": "Scourge Treads"
@@ -30672,13 +30672,13 @@
     {
       "id": "hazennstuff:geckolib_soul_flame_boots",
       "mod": "hazennstuff",
-      "type": "item",
-      "slot": null,
+      "type": "armor",
+      "slot": "boots",
       "affinities": [
         "fire",
         "spirit"
       ],
-      "setKey": null,
+      "setKey": "geckolib_soul_flame",
       "name": {
         "en": "Soul Flame Tracers",
         "fr": "Soul Flame Tracers"
@@ -31184,10 +31184,10 @@
     {
       "id": "hazennstuff:geckolib_arbitrium_robes_boots",
       "mod": "hazennstuff",
-      "type": "item",
-      "slot": null,
+      "type": "armor",
+      "slot": "boots",
       "affinities": [],
-      "setKey": null,
+      "setKey": "geckolib_arbitrium_robes",
       "name": {
         "en": "Arbitrium Tracers",
         "fr": "Arbitrium Tracers"
@@ -31252,10 +31252,10 @@
     {
       "id": "hazennstuff:geckolib_ascended_arbitrium_robes_boots",
       "mod": "hazennstuff",
-      "type": "item",
-      "slot": null,
+      "type": "armor",
+      "slot": "boots",
       "affinities": [],
-      "setKey": null,
+      "setKey": "geckolib_ascended_arbitrium_robes",
       "name": {
         "en": "Arbitrium Tracers",
         "fr": "Arbitrium Tracers"
@@ -31411,12 +31411,12 @@
     {
       "id": "hazennstuff:seraph_chestplate",
       "mod": "hazennstuff",
-      "type": "item",
-      "slot": null,
+      "type": "armor",
+      "slot": "chestplate",
       "affinities": [
         "radiance"
       ],
-      "setKey": null,
+      "setKey": "seraph",
       "name": {
         "en": "Seraph Breastplate",
         "fr": "Seraph Breastplate"
@@ -31471,12 +31471,12 @@
     {
       "id": "hazennstuff:seraph_boots",
       "mod": "hazennstuff",
-      "type": "item",
-      "slot": null,
+      "type": "armor",
+      "slot": "boots",
       "affinities": [
         "radiance"
       ],
-      "setKey": null,
+      "setKey": "seraph",
       "name": {
         "en": "Seraph Tracers",
         "fr": "Seraph Tracers"
@@ -31518,10 +31518,10 @@
     {
       "id": "hazennstuff:legionnaire_chestplate",
       "mod": "hazennstuff",
-      "type": "item",
-      "slot": null,
+      "type": "armor",
+      "slot": "chestplate",
       "affinities": [],
-      "setKey": null,
+      "setKey": "legionnaire",
       "name": {
         "en": "Legionnaire Breastplate",
         "fr": "Legionnaire Breastplate"
@@ -31586,10 +31586,10 @@
     {
       "id": "hazennstuff:charged_scourge_chestplate",
       "mod": "hazennstuff",
-      "type": "item",
-      "slot": null,
+      "type": "armor",
+      "slot": "chestplate",
       "affinities": [],
-      "setKey": null,
+      "setKey": "charged_scourge",
       "name": {
         "en": "Scourge Scale Mail",
         "fr": "Scourge Scale Mail"
@@ -31603,10 +31603,10 @@
     {
       "id": "hazennstuff:charged_scourge_leggings",
       "mod": "hazennstuff",
-      "type": "item",
-      "slot": null,
+      "type": "armor",
+      "slot": "leggings",
       "affinities": [],
-      "setKey": null,
+      "setKey": "charged_scourge",
       "name": {
         "en": "Scourge Kneepads",
         "fr": "Scourge Kneepads"
@@ -31620,10 +31620,10 @@
     {
       "id": "hazennstuff:charged_scourge_boots",
       "mod": "hazennstuff",
-      "type": "item",
-      "slot": null,
+      "type": "armor",
+      "slot": "boots",
       "affinities": [],
-      "setKey": null,
+      "setKey": "charged_scourge",
       "name": {
         "en": "Scourge Treads",
         "fr": "Scourge Treads"
@@ -31697,13 +31697,13 @@
     {
       "id": "hazennstuff:soul_flame_boots",
       "mod": "hazennstuff",
-      "type": "item",
-      "slot": null,
+      "type": "armor",
+      "slot": "boots",
       "affinities": [
         "fire",
         "spirit"
       ],
-      "setKey": null,
+      "setKey": "soul_flame",
       "name": {
         "en": "Soul Flame Tracers",
         "fr": "Soul Flame Tracers"
@@ -32312,10 +32312,10 @@
     {
       "id": "hazennstuff:arbitrium_robes_boots",
       "mod": "hazennstuff",
-      "type": "item",
-      "slot": null,
+      "type": "armor",
+      "slot": "boots",
       "affinities": [],
-      "setKey": null,
+      "setKey": "arbitrium_robes",
       "name": {
         "en": "Arbitrium Tracers",
         "fr": "Arbitrium Tracers"
@@ -32388,10 +32388,10 @@
     {
       "id": "hazennstuff:ascended_arbitrium_robes_boots",
       "mod": "hazennstuff",
-      "type": "item",
-      "slot": null,
+      "type": "armor",
+      "slot": "boots",
       "affinities": [],
-      "setKey": null,
+      "setKey": "ascended_arbitrium_robes",
       "name": {
         "en": "Ascended Arbitrium Tracers",
         "fr": "Ascended Arbitrium Tracers"
@@ -32512,10 +32512,10 @@
     {
       "id": "hazennstuff:fireblossom_gown_chestplate",
       "mod": "hazennstuff",
-      "type": "item",
-      "slot": null,
+      "type": "armor",
+      "slot": "chestplate",
       "affinities": [],
-      "setKey": null,
+      "setKey": "fireblossom_gown",
       "name": {
         "en": "Fireblossom Gown",
         "fr": "Fireblossom Gown"
@@ -32786,10 +32786,10 @@
     {
       "id": "hazennstuff:geckolib_fireblossom_gown_chestplate",
       "mod": "hazennstuff",
-      "type": "item",
-      "slot": null,
+      "type": "armor",
+      "slot": "chestplate",
       "affinities": [],
-      "setKey": null,
+      "setKey": "geckolib_fireblossom_gown",
       "name": {
         "en": "Fireblossom Gown",
         "fr": "Fireblossom Gown"
@@ -33090,10 +33090,10 @@
     {
       "id": "hazennstuff:project_sekai_chestplate",
       "mod": "hazennstuff",
-      "type": "item",
-      "slot": null,
+      "type": "armor",
+      "slot": "chestplate",
       "affinities": [],
-      "setKey": null,
+      "setKey": "project_sekai",
       "name": {
         "en": "Miku's Uniform",
         "fr": "Miku's Uniform"
@@ -33158,10 +33158,10 @@
     {
       "id": "hazennstuff:rotten_girl_chestplate",
       "mod": "hazennstuff",
-      "type": "item",
-      "slot": null,
+      "type": "armor",
+      "slot": "chestplate",
       "affinities": [],
-      "setKey": null,
+      "setKey": "rotten_girl",
       "name": {
         "en": "''Miku's'' Uniform",
         "fr": "''Miku's'' Uniform"
@@ -33226,10 +33226,10 @@
     {
       "id": "hazennstuff:synthesizer_v_chestplate",
       "mod": "hazennstuff",
-      "type": "item",
-      "slot": null,
+      "type": "armor",
+      "slot": "chestplate",
       "affinities": [],
-      "setKey": null,
+      "setKey": "synthesizer_v",
       "name": {
         "en": "Teto's Uniform",
         "fr": "Teto's Uniform"
@@ -33294,10 +33294,10 @@
     {
       "id": "hazennstuff:utau_chestplate",
       "mod": "hazennstuff",
-      "type": "item",
-      "slot": null,
+      "type": "armor",
+      "slot": "chestplate",
       "affinities": [],
-      "setKey": null,
+      "setKey": "utau",
       "name": {
         "en": "Teto's Uniform",
         "fr": "Teto's Uniform"
@@ -33754,10 +33754,10 @@
     {
       "id": "hazennstuff:maverick_chestplate",
       "mod": "hazennstuff",
-      "type": "item",
-      "slot": null,
+      "type": "armor",
+      "slot": "chestplate",
       "affinities": [],
-      "setKey": null,
+      "setKey": "maverick",
       "name": {
         "en": "Maverick Poncho",
         "fr": "Maverick Poncho"
@@ -33854,10 +33854,10 @@
     {
       "id": "hazennstuff:slc_cat_chestplate",
       "mod": "hazennstuff",
-      "type": "item",
-      "slot": null,
+      "type": "armor",
+      "slot": "chestplate",
       "affinities": [],
-      "setKey": null,
+      "setKey": "slc_cat",
       "name": {
         "en": "Magic Girl Dress",
         "fr": "Magic Girl Dress"
@@ -33879,10 +33879,10 @@
     {
       "id": "hazennstuff:slc_cat_leggings",
       "mod": "hazennstuff",
-      "type": "item",
-      "slot": null,
+      "type": "armor",
+      "slot": "leggings",
       "affinities": [],
-      "setKey": null,
+      "setKey": "slc_cat",
       "name": {
         "en": "Magic Girl Socks",
         "fr": "Magic Girl Socks"
@@ -34492,10 +34492,10 @@
     {
       "id": "hazennstuff:herta_puppet_chestplate",
       "mod": "hazennstuff",
-      "type": "item",
-      "slot": null,
+      "type": "armor",
+      "slot": "chestplate",
       "affinities": [],
-      "setKey": null,
+      "setKey": "herta_puppet",
       "name": {
         "en": "Herta's Puppet's Dress",
         "fr": "Herta's Puppet's Dress"
@@ -35020,10 +35020,10 @@
     {
       "id": "hazennstuff:dead_king_helmet",
       "mod": "hazennstuff",
-      "type": "item",
-      "slot": null,
+      "type": "armor",
+      "slot": "helmet",
       "affinities": [],
-      "setKey": null,
+      "setKey": "dead_king",
       "name": {
         "en": "Dead King Skull",
         "fr": "Dead King Skull"
@@ -35037,10 +35037,10 @@
     {
       "id": "hazennstuff:dead_king_chestplate",
       "mod": "hazennstuff",
-      "type": "item",
-      "slot": null,
+      "type": "armor",
+      "slot": "chestplate",
       "affinities": [],
-      "setKey": null,
+      "setKey": "dead_king",
       "name": {
         "en": "Dead King Pauldrons",
         "fr": "Dead King Pauldrons"
@@ -35071,10 +35071,10 @@
     {
       "id": "hazennstuff:dead_king_boots",
       "mod": "hazennstuff",
-      "type": "item",
-      "slot": null,
+      "type": "armor",
+      "slot": "boots",
       "affinities": [],
-      "setKey": null,
+      "setKey": "dead_king",
       "name": {
         "en": "Dead King Shackles",
         "fr": "Dead King Shackles"
@@ -35477,12 +35477,12 @@
     {
       "id": "hazennstuff:radiant_crystal_helmet",
       "mod": "hazennstuff",
-      "type": "item",
-      "slot": null,
+      "type": "armor",
+      "slot": "helmet",
       "affinities": [
         "holy"
       ],
-      "setKey": null,
+      "setKey": "radiant_crystal",
       "name": {
         "en": "Radiant Crystal Ball",
         "fr": "Radiant Crystal Ball"
@@ -35585,12 +35585,12 @@
     {
       "id": "hazennstuff:geckolib_radiant_crystal_helmet",
       "mod": "hazennstuff",
-      "type": "item",
-      "slot": null,
+      "type": "armor",
+      "slot": "helmet",
       "affinities": [
         "holy"
       ],
-      "setKey": null,
+      "setKey": "geckolib_radiant_crystal",
       "name": {
         "en": "Radiant Crystal Ball",
         "fr": "Radiant Crystal Ball"
@@ -35914,10 +35914,10 @@
     {
       "id": "hazennstuff:masked_fool_chestplate",
       "mod": "hazennstuff",
-      "type": "item",
-      "slot": null,
+      "type": "armor",
+      "slot": "chestplate",
       "affinities": [],
-      "setKey": null,
+      "setKey": "masked_fool",
       "name": {
         "en": "Masked Fool Suit",
         "fr": "Masked Fool Suit"
@@ -36498,10 +36498,10 @@
     {
       "id": "hazennstuff:nautilus_knight_chestplate",
       "mod": "hazennstuff",
-      "type": "item",
-      "slot": null,
+      "type": "armor",
+      "slot": "chestplate",
       "affinities": [],
-      "setKey": null,
+      "setKey": "nautilus_knight",
       "name": {
         "en": "Nautilus Knight Suit",
         "fr": "Nautilus Knight Suit"
@@ -37654,10 +37654,10 @@
     {
       "id": "hazennstuff:neru_chestplate",
       "mod": "hazennstuff",
-      "type": "item",
-      "slot": null,
+      "type": "armor",
+      "slot": "chestplate",
       "affinities": [],
-      "setKey": null,
+      "setKey": "neru",
       "name": {
         "en": "Neru's Dress",
         "fr": "Neru's Dress"
@@ -38157,10 +38157,10 @@
     {
       "id": "hazennstuff:frostbite_hunter_chestplate",
       "mod": "hazennstuff",
-      "type": "item",
-      "slot": null,
+      "type": "armor",
+      "slot": "chestplate",
       "affinities": [],
-      "setKey": null,
+      "setKey": "frostbite_hunter",
       "name": {
         "en": "Frostbite Hunter Cloak",
         "fr": "Frostbite Hunter Cloak"
@@ -39356,13 +39356,13 @@
     {
       "id": "hazennstuff:shadowwalker_enderman_chestplate",
       "mod": "hazennstuff",
-      "type": "item",
-      "slot": null,
+      "type": "armor",
+      "slot": "chestplate",
       "affinities": [
         "shadow",
         "ender"
       ],
-      "setKey": null,
+      "setKey": "shadowwalker_enderman",
       "name": {
         "en": "Shadow-Walker Enderman Armor",
         "fr": "Shadow-Walker Enderman Armor"
@@ -39499,10 +39499,10 @@
     {
       "id": "hazennstuff:necromancer_chestplate",
       "mod": "hazennstuff",
-      "type": "item",
-      "slot": null,
+      "type": "armor",
+      "slot": "chestplate",
       "affinities": [],
-      "setKey": null,
+      "setKey": "necromancer",
       "name": {
         "en": "Necromancer Cape",
         "fr": "Necromancer Cape"
@@ -39550,10 +39550,10 @@
     {
       "id": "hazennstuff:nameless_one_chestplate",
       "mod": "hazennstuff",
-      "type": "item",
-      "slot": null,
+      "type": "armor",
+      "slot": "chestplate",
       "affinities": [],
-      "setKey": null,
+      "setKey": "nameless_one",
       "name": {
         "en": "Nameless One Cape",
         "fr": "Nameless One Cape"
@@ -40561,10 +40561,10 @@
     {
       "id": "iss_magicfromtheeast:mist_boots",
       "mod": "iss_magicfromtheeast",
-      "type": "item",
-      "slot": null,
+      "type": "armor",
+      "slot": "boots",
       "affinities": [],
-      "setKey": null,
+      "setKey": "mist",
       "name": {
         "en": "Boots of Mist",
         "fr": "Boots of Mist"
@@ -47756,9 +47756,11 @@
         "leggings": [
           "hazennstuff:arbitrium_robes_leggings"
         ],
-        "boots": []
+        "boots": [
+          "hazennstuff:arbitrium_robes_boots"
+        ]
       },
-      "pieceCount": 3
+      "pieceCount": 4
     },
     {
       "id": "irons_spellbooks:archevoker",
@@ -47802,9 +47804,11 @@
         "leggings": [
           "hazennstuff:ascended_arbitrium_robes_leggings"
         ],
-        "boots": []
+        "boots": [
+          "hazennstuff:ascended_arbitrium_robes_boots"
+        ]
       },
-      "pieceCount": 3
+      "pieceCount": 4
     },
     {
       "id": "hazennstuff:ascended_iron431",
@@ -47988,13 +47992,12 @@
           "cataclysm_spellbooks:bloom_stone_chestplate"
         ],
         "leggings": [
-          "cataclysm_spellbooks:bloom_stone_skirt"
-        ],
-        "boots": [
+          "cataclysm_spellbooks:bloom_stone_skirt",
           "cataclysm_spellbooks:bloom_stone_greaves"
-        ]
+        ],
+        "boots": []
       },
-      "pieceCount": 4
+      "pieceCount": 3
     },
     {
       "id": "hazennstuff:bounty_hunter",
@@ -48080,11 +48083,17 @@
         "helmet": [
           "hazennstuff:charged_scourge_helmet"
         ],
-        "chestplate": [],
-        "leggings": [],
-        "boots": []
+        "chestplate": [
+          "hazennstuff:charged_scourge_chestplate"
+        ],
+        "leggings": [
+          "hazennstuff:charged_scourge_leggings"
+        ],
+        "boots": [
+          "hazennstuff:charged_scourge_boots"
+        ]
       },
-      "pieceCount": 1
+      "pieceCount": 4
     },
     {
       "id": "hazennstuff:chlorophyte",
@@ -48174,10 +48183,14 @@
         "chestplate": [
           "discerning_the_eldritch:crimson_stag_robes"
         ],
-        "leggings": [],
-        "boots": []
+        "leggings": [
+          "discerning_the_eldritch:crimson_stag_leggings"
+        ],
+        "boots": [
+          "discerning_the_eldritch:crimson_stag_boots"
+        ]
       },
-      "pieceCount": 1
+      "pieceCount": 3
     },
     {
       "id": "hazennstuff:cryogenic_ruler",
@@ -48260,12 +48273,16 @@
         "en": "Cultist",
         "fr": "Cultist"
       },
-      "affinities": [],
+      "affinities": [
+        "blood"
+      ],
       "pieces": {
         "helmet": [
           "irons_spellbooks:cultist_helmet"
         ],
-        "chestplate": [],
+        "chestplate": [
+          "irons_spellbooks:cultist_chestplate"
+        ],
         "leggings": [
           "irons_spellbooks:cultist_leggings"
         ],
@@ -48273,7 +48290,7 @@
           "irons_spellbooks:cultist_boots"
         ]
       },
-      "pieceCount": 3
+      "pieceCount": 4
     },
     {
       "id": "cataclysm_spellbooks:cursium_mage",
@@ -48287,14 +48304,16 @@
         "helmet": [
           "cataclysm_spellbooks:cursium_mage_circlet"
         ],
-        "chestplate": [],
+        "chestplate": [
+          "cataclysm_spellbooks:cursium_mage_chestplate"
+        ],
         "leggings": [
           "cataclysm_spellbooks:cursium_mage_skirt",
           "cataclysm_spellbooks:cursium_mage_boots"
         ],
         "boots": []
       },
-      "pieceCount": 2
+      "pieceCount": 3
     },
     {
       "id": "somakespells:dark_metal_battlemage",
@@ -48355,14 +48374,20 @@
       },
       "affinities": [],
       "pieces": {
-        "helmet": [],
-        "chestplate": [],
+        "helmet": [
+          "hazennstuff:dead_king_helmet"
+        ],
+        "chestplate": [
+          "hazennstuff:dead_king_chestplate"
+        ],
         "leggings": [
           "hazennstuff:dead_king_leggings"
         ],
-        "boots": []
+        "boots": [
+          "hazennstuff:dead_king_boots"
+        ]
       },
-      "pieceCount": 1
+      "pieceCount": 4
     },
     {
       "id": "hazennstuff:dreadsteel_knight",
@@ -48432,6 +48457,7 @@
           "discerning_the_eldritch:eldritch_warlock_robes"
         ],
         "leggings": [
+          "discerning_the_eldritch:eldritch_warlock_leggings",
           "discerning_the_eldritch:eldritch_warlock_greaves"
         ],
         "boots": []
@@ -48693,7 +48719,9 @@
         "helmet": [
           "hazennstuff:fireblossom_gown_helmet"
         ],
-        "chestplate": [],
+        "chestplate": [
+          "hazennstuff:fireblossom_gown_chestplate"
+        ],
         "leggings": [
           "hazennstuff:fireblossom_gown_leggings"
         ],
@@ -48701,7 +48729,7 @@
           "hazennstuff:fireblossom_gown_boots"
         ]
       },
-      "pieceCount": 3
+      "pieceCount": 4
     },
     {
       "id": "hazennstuff:fireblossom_knight",
@@ -48787,7 +48815,9 @@
         "helmet": [
           "hazennstuff:frostbite_hunter_helmet"
         ],
-        "chestplate": [],
+        "chestplate": [
+          "hazennstuff:frostbite_hunter_chestplate"
+        ],
         "leggings": [
           "hazennstuff:frostbite_hunter_leggings"
         ],
@@ -48795,7 +48825,7 @@
           "hazennstuff:frostbite_hunter_boots"
         ]
       },
-      "pieceCount": 3
+      "pieceCount": 4
     },
     {
       "id": "hazennstuff:frostbite_knight",
@@ -48913,9 +48943,11 @@
         "leggings": [
           "hazennstuff:geckolib_arbitrium_robes_leggings"
         ],
-        "boots": []
+        "boots": [
+          "hazennstuff:geckolib_arbitrium_robes_boots"
+        ]
       },
-      "pieceCount": 3
+      "pieceCount": 4
     },
     {
       "id": "hazennstuff:geckolib_ascended_arbitrium_robes",
@@ -48935,9 +48967,11 @@
         "leggings": [
           "hazennstuff:geckolib_ascended_arbitrium_robes_leggings"
         ],
-        "boots": []
+        "boots": [
+          "hazennstuff:geckolib_ascended_arbitrium_robes_boots"
+        ]
       },
-      "pieceCount": 3
+      "pieceCount": 4
     },
     {
       "id": "hazennstuff:geckolib_ascended_lemon_god",
@@ -49023,11 +49057,17 @@
         "helmet": [
           "hazennstuff:geckolib_charged_scourge_helmet"
         ],
-        "chestplate": [],
-        "leggings": [],
-        "boots": []
+        "chestplate": [
+          "hazennstuff:geckolib_charged_scourge_chestplate"
+        ],
+        "leggings": [
+          "hazennstuff:geckolib_charged_scourge_leggings"
+        ],
+        "boots": [
+          "hazennstuff:geckolib_charged_scourge_boots"
+        ]
       },
-      "pieceCount": 1
+      "pieceCount": 4
     },
     {
       "id": "hazennstuff:geckolib_cosmic_scholar",
@@ -49216,7 +49256,9 @@
         "helmet": [
           "hazennstuff:geckolib_fireblossom_gown_helmet"
         ],
-        "chestplate": [],
+        "chestplate": [
+          "hazennstuff:geckolib_fireblossom_gown_chestplate"
+        ],
         "leggings": [
           "hazennstuff:geckolib_fireblossom_gown_leggings"
         ],
@@ -49224,7 +49266,7 @@
           "hazennstuff:geckolib_fireblossom_gown_boots"
         ]
       },
-      "pieceCount": 3
+      "pieceCount": 4
     },
     {
       "id": "hazennstuff:geckolib_fireblossom_knight",
@@ -49357,7 +49399,9 @@
         "holy"
       ],
       "pieces": {
-        "helmet": [],
+        "helmet": [
+          "hazennstuff:geckolib_radiant_crystal_helmet"
+        ],
         "chestplate": [
           "hazennstuff:geckolib_radiant_crystal_chestplate"
         ],
@@ -49368,7 +49412,7 @@
           "hazennstuff:geckolib_radiant_crystal_boots"
         ]
       },
-      "pieceCount": 3
+      "pieceCount": 4
     },
     {
       "id": "hazennstuff:geckolib_seraph",
@@ -49384,13 +49428,17 @@
         "helmet": [
           "hazennstuff:geckolib_seraph_helmet"
         ],
-        "chestplate": [],
+        "chestplate": [
+          "hazennstuff:geckolib_seraph_chestplate"
+        ],
         "leggings": [
           "hazennstuff:geckolib_seraph_leggings"
         ],
-        "boots": []
+        "boots": [
+          "hazennstuff:geckolib_seraph_boots"
+        ]
       },
-      "pieceCount": 2
+      "pieceCount": 4
     },
     {
       "id": "hazennstuff:geckolib_soul_flame",
@@ -49413,9 +49461,11 @@
         "leggings": [
           "hazennstuff:geckolib_soul_flame_leggings"
         ],
-        "boots": []
+        "boots": [
+          "hazennstuff:geckolib_soul_flame_boots"
+        ]
       },
-      "pieceCount": 3
+      "pieceCount": 4
     },
     {
       "id": "hazennstuff:geckolib_supreme_witch",
@@ -49567,7 +49617,9 @@
         "helmet": [
           "hazennstuff:herta_puppet_helmet"
         ],
-        "chestplate": [],
+        "chestplate": [
+          "hazennstuff:herta_puppet_chestplate"
+        ],
         "leggings": [
           "hazennstuff:herta_puppet_leggings"
         ],
@@ -49575,7 +49627,7 @@
           "hazennstuff:herta_puppet_boots"
         ]
       },
-      "pieceCount": 3
+      "pieceCount": 4
     },
     {
       "id": "hazennstuff:how_did_you_find_the_hazel",
@@ -49804,7 +49856,9 @@
         "helmet": [
           "hazennstuff:legionnaire_helmet"
         ],
-        "chestplate": [],
+        "chestplate": [
+          "hazennstuff:legionnaire_chestplate"
+        ],
         "leggings": [
           "hazennstuff:legionnaire_leggings"
         ],
@@ -49812,7 +49866,7 @@
           "hazennstuff:legionnaire_boots"
         ]
       },
-      "pieceCount": 3
+      "pieceCount": 4
     },
     {
       "id": "hazennstuff:legionnaire_commander",
@@ -49922,7 +49976,9 @@
         "helmet": [
           "hazennstuff:masked_fool_helmet"
         ],
-        "chestplate": [],
+        "chestplate": [
+          "hazennstuff:masked_fool_chestplate"
+        ],
         "leggings": [
           "hazennstuff:masked_fool_leggings"
         ],
@@ -49930,7 +49986,7 @@
           "hazennstuff:masked_fool_boots"
         ]
       },
-      "pieceCount": 3
+      "pieceCount": 4
     },
     {
       "id": "hazennstuff:maverick",
@@ -49944,7 +50000,9 @@
         "helmet": [
           "hazennstuff:maverick_helmet"
         ],
-        "chestplate": [],
+        "chestplate": [
+          "hazennstuff:maverick_chestplate"
+        ],
         "leggings": [
           "hazennstuff:maverick_leggings"
         ],
@@ -49952,7 +50010,7 @@
           "hazennstuff:maverick_boots"
         ]
       },
-      "pieceCount": 3
+      "pieceCount": 4
     },
     {
       "id": "hazennstuff:miner",
@@ -49977,6 +50035,24 @@
         ]
       },
       "pieceCount": 4
+    },
+    {
+      "id": "iss_magicfromtheeast:mist",
+      "mod": "iss_magicfromtheeast",
+      "name": {
+        "en": "Mist",
+        "fr": "Mist"
+      },
+      "affinities": [],
+      "pieces": {
+        "helmet": [],
+        "chestplate": [],
+        "leggings": [],
+        "boots": [
+          "iss_magicfromtheeast:mist_boots"
+        ]
+      },
+      "pieceCount": 1
     },
     {
       "id": "hazennstuff:mithril_battlemage",
@@ -50082,13 +50158,15 @@
         "helmet": [
           "hazennstuff:nameless_one_helmet"
         ],
-        "chestplate": [],
+        "chestplate": [
+          "hazennstuff:nameless_one_chestplate"
+        ],
         "leggings": [
           "hazennstuff:nameless_one_leggings"
         ],
         "boots": []
       },
-      "pieceCount": 2
+      "pieceCount": 3
     },
     {
       "id": "hazennstuff:nautilus_knight",
@@ -50102,7 +50180,9 @@
         "helmet": [
           "hazennstuff:nautilus_knight_helmet"
         ],
-        "chestplate": [],
+        "chestplate": [
+          "hazennstuff:nautilus_knight_chestplate"
+        ],
         "leggings": [
           "hazennstuff:nautilus_knight_leggings"
         ],
@@ -50110,7 +50190,7 @@
           "hazennstuff:nautilus_knight_boots"
         ]
       },
-      "pieceCount": 3
+      "pieceCount": 4
     },
     {
       "id": "hazennstuff:necromancer",
@@ -50124,13 +50204,15 @@
         "helmet": [
           "hazennstuff:necromancer_helmet"
         ],
-        "chestplate": [],
+        "chestplate": [
+          "hazennstuff:necromancer_chestplate"
+        ],
         "leggings": [
           "hazennstuff:necromancer_leggings"
         ],
         "boots": []
       },
-      "pieceCount": 2
+      "pieceCount": 3
     },
     {
       "id": "hazennstuff:neru",
@@ -50144,7 +50226,9 @@
         "helmet": [
           "hazennstuff:neru_helmet"
         ],
-        "chestplate": [],
+        "chestplate": [
+          "hazennstuff:neru_chestplate"
+        ],
         "leggings": [
           "hazennstuff:neru_leggings"
         ],
@@ -50152,7 +50236,7 @@
           "hazennstuff:neru_boots"
         ]
       },
-      "pieceCount": 3
+      "pieceCount": 4
     },
     {
       "id": "irons_spellbooks:netherite_mage",
@@ -50258,14 +50342,16 @@
         "helmet": [
           "cataclysm_spellbooks:pharaoh_helmet"
         ],
-        "chestplate": [],
+        "chestplate": [
+          "cataclysm_spellbooks:pharaoh_chestplate"
+        ],
         "leggings": [
           "cataclysm_spellbooks:pharaoh_leggings",
           "cataclysm_spellbooks:pharaoh_greaves"
         ],
         "boots": []
       },
-      "pieceCount": 2
+      "pieceCount": 3
     },
     {
       "id": "irons_spellbooks:plagued",
@@ -50327,7 +50413,9 @@
         "helmet": [
           "hazennstuff:project_sekai_helmet"
         ],
-        "chestplate": [],
+        "chestplate": [
+          "hazennstuff:project_sekai_chestplate"
+        ],
         "leggings": [
           "hazennstuff:project_sekai_leggings"
         ],
@@ -50335,7 +50423,7 @@
           "hazennstuff:project_sekai_boots"
         ]
       },
-      "pieceCount": 3
+      "pieceCount": 4
     },
     {
       "id": "irons_spellbooks:pumpkin",
@@ -50464,7 +50552,9 @@
         "holy"
       ],
       "pieces": {
-        "helmet": [],
+        "helmet": [
+          "hazennstuff:radiant_crystal_helmet"
+        ],
         "chestplate": [
           "hazennstuff:radiant_crystal_chestplate"
         ],
@@ -50475,7 +50565,7 @@
           "hazennstuff:radiant_crystal_boots"
         ]
       },
-      "pieceCount": 3
+      "pieceCount": 4
     },
     {
       "id": "hazennstuff:rotten_girl",
@@ -50489,7 +50579,9 @@
         "helmet": [
           "hazennstuff:rotten_girl_helmet"
         ],
-        "chestplate": [],
+        "chestplate": [
+          "hazennstuff:rotten_girl_chestplate"
+        ],
         "leggings": [
           "hazennstuff:rotten_girl_leggings"
         ],
@@ -50497,7 +50589,7 @@
           "hazennstuff:rotten_girl_boots"
         ]
       },
-      "pieceCount": 3
+      "pieceCount": 4
     },
     {
       "id": "hazennstuff:sacred_robes",
@@ -50539,13 +50631,17 @@
         "helmet": [
           "hazennstuff:seraph_helmet"
         ],
-        "chestplate": [],
+        "chestplate": [
+          "hazennstuff:seraph_chestplate"
+        ],
         "leggings": [
           "hazennstuff:seraph_leggings"
         ],
-        "boots": []
+        "boots": [
+          "hazennstuff:seraph_boots"
+        ]
       },
-      "pieceCount": 2
+      "pieceCount": 4
     },
     {
       "id": "hazennstuff:shadow_jester",
@@ -50607,13 +50703,16 @@
         "fr": "Shadowwalker"
       },
       "affinities": [
-        "shadow"
+        "shadow",
+        "ender"
       ],
       "pieces": {
         "helmet": [
           "irons_spellbooks:shadowwalker_helmet"
         ],
-        "chestplate": [],
+        "chestplate": [
+          "irons_spellbooks:shadowwalker_chestplate"
+        ],
         "leggings": [
           "irons_spellbooks:shadowwalker_leggings"
         ],
@@ -50621,7 +50720,7 @@
           "irons_spellbooks:shadowwalker_boots"
         ]
       },
-      "pieceCount": 3
+      "pieceCount": 4
     },
     {
       "id": "hazennstuff:shadowwalker_enderman",
@@ -50639,7 +50738,9 @@
           "hazennstuff:shadowwalker_enderman_hood",
           "hazennstuff:shadowwalker_enderman_blindfold"
         ],
-        "chestplate": [],
+        "chestplate": [
+          "hazennstuff:shadowwalker_enderman_chestplate"
+        ],
         "leggings": [
           "hazennstuff:shadowwalker_enderman_leggings"
         ],
@@ -50647,7 +50748,7 @@
           "hazennstuff:shadowwalker_enderman_boots"
         ]
       },
-      "pieceCount": 3
+      "pieceCount": 4
     },
     {
       "id": "hazennstuff:shadowwalker_enderman_masked",
@@ -50681,13 +50782,17 @@
         "helmet": [
           "hazennstuff:slc_cat_helmet"
         ],
-        "chestplate": [],
-        "leggings": [],
+        "chestplate": [
+          "hazennstuff:slc_cat_chestplate"
+        ],
+        "leggings": [
+          "hazennstuff:slc_cat_leggings"
+        ],
         "boots": [
           "hazennstuff:slc_cat_boots"
         ]
       },
-      "pieceCount": 2
+      "pieceCount": 4
     },
     {
       "id": "hazennstuff:soul_flame",
@@ -50710,9 +50815,11 @@
         "leggings": [
           "hazennstuff:soul_flame_leggings"
         ],
-        "boots": []
+        "boots": [
+          "hazennstuff:soul_flame_boots"
+        ]
       },
-      "pieceCount": 3
+      "pieceCount": 4
     },
     {
       "id": "hazennstuff:soul_legionnaire_commander",
@@ -50793,6 +50900,24 @@
       "pieceCount": 4
     },
     {
+      "id": "irons_spellbooks:speed",
+      "mod": "irons_spellbooks",
+      "name": {
+        "en": "Speed",
+        "fr": "Speed"
+      },
+      "affinities": [],
+      "pieces": {
+        "helmet": [],
+        "chestplate": [],
+        "leggings": [],
+        "boots": [
+          "irons_spellbooks:speed_boots"
+        ]
+      },
+      "pieceCount": 1
+    },
+    {
       "id": "hazennstuff:supreme_witch",
       "mod": "hazennstuff",
       "name": {
@@ -50828,7 +50953,9 @@
         "helmet": [
           "hazennstuff:synthesizer_v_helmet"
         ],
-        "chestplate": [],
+        "chestplate": [
+          "hazennstuff:synthesizer_v_chestplate"
+        ],
         "leggings": [
           "hazennstuff:synthesizer_v_leggings"
         ],
@@ -50836,7 +50963,7 @@
           "hazennstuff:synthesizer_v_boots"
         ]
       },
-      "pieceCount": 3
+      "pieceCount": 4
     },
     {
       "id": "iss_magicfromtheeast:taoist",
@@ -50943,7 +51070,9 @@
         "helmet": [
           "hazennstuff:utau_helmet"
         ],
-        "chestplate": [],
+        "chestplate": [
+          "hazennstuff:utau_chestplate"
+        ],
         "leggings": [
           "hazennstuff:utau_leggings"
         ],
@@ -50951,7 +51080,7 @@
           "hazennstuff:utau_boots"
         ]
       },
-      "pieceCount": 3
+      "pieceCount": 4
     },
     {
       "id": "irons_spellbooks:wandering_magician",

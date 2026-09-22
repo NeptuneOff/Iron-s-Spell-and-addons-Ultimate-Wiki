@@ -6,12 +6,13 @@
     "generatedAt": "2026-09-22T06:49:50.926Z",
     "schema": 1,
     "itemAtlas": {
-      "path": "./assets/item-icons.webp?v=20260922-2",
+      "path": "./assets/item-icons.webp?v=20260922-3",
       "cell": 64,
       "columns": 32,
       "width": 2048,
       "height": 2560,
       "authentic": 1075,
+      "modelRendered": 60,
       "total": 1269
     }
   },

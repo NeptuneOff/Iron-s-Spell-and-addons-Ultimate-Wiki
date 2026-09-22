@@ -3,7 +3,7 @@
     "minecraft": "1.21.1",
     "loader": "NeoForge 21.1.250",
     "configs": "default",
-    "generatedAt": "2026-09-21T19:23:27.946Z",
+    "generatedAt": "2026-09-22T06:35:00.075Z",
     "schema": 1,
     "itemAtlas": {
       "path": "./assets/item-icons.webp",
@@ -14585,7 +14585,9 @@
       "mod": "irons_spellbooks",
       "type": "spellbook",
       "slot": null,
-      "affinities": [],
+      "affinities": [
+        "evocation"
+      ],
       "setKey": null,
       "name": {
         "en": "Grimoire of Evokation",
@@ -14921,7 +14923,7 @@
     {
       "id": "irons_spellbooks:scroll",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "upgrade",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -14951,7 +14953,7 @@
     {
       "id": "irons_spellbooks:common_ink",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -14978,7 +14980,7 @@
     {
       "id": "irons_spellbooks:uncommon_ink",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -15006,7 +15008,7 @@
     {
       "id": "irons_spellbooks:rare_ink",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -15035,7 +15037,7 @@
     {
       "id": "irons_spellbooks:epic_ink",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -15064,7 +15066,7 @@
     {
       "id": "irons_spellbooks:legendary_ink",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -15090,7 +15092,7 @@
     {
       "id": "irons_spellbooks:lightning_bottle",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [
         "lightning"
@@ -15109,7 +15111,7 @@
     {
       "id": "irons_spellbooks:frozen_bone",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -15132,7 +15134,7 @@
     {
       "id": "irons_spellbooks:blood_vial",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [
         "blood"
@@ -15159,7 +15161,7 @@
     {
       "id": "irons_spellbooks:ice_venom_vial",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [
         "ice"
@@ -15186,7 +15188,7 @@
     {
       "id": "irons_spellbooks:divine_pearl",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [
         "holy"
@@ -15216,7 +15218,7 @@
     {
       "id": "irons_spellbooks:hogskin",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -15235,7 +15237,7 @@
     {
       "id": "irons_spellbooks:dragonskin",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -15254,7 +15256,7 @@
     {
       "id": "irons_spellbooks:ruined_book",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -15274,7 +15276,7 @@
     {
       "id": "irons_spellbooks:arcane_essence",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -15304,7 +15306,7 @@
     {
       "id": "irons_spellbooks:cinder_essence",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -15326,7 +15328,7 @@
     {
       "id": "irons_spellbooks:dev_staff",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "weapon",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -15343,7 +15345,7 @@
     {
       "id": "irons_spellbooks:staff_of_the_nines",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "weapon",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -15360,7 +15362,7 @@
     {
       "id": "irons_spellbooks:arcane_salvage",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -15377,7 +15379,7 @@
     {
       "id": "irons_spellbooks:arcane_salvage_desc",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -15394,7 +15396,7 @@
     {
       "id": "irons_spellbooks:timeless_slurry",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -15417,7 +15419,7 @@
     {
       "id": "irons_spellbooks:pyrium_ingot",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -15436,7 +15438,7 @@
     {
       "id": "irons_spellbooks:mithril_ingot",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -15461,7 +15463,7 @@
     {
       "id": "irons_spellbooks:mithril_scrap",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -15495,7 +15497,7 @@
     {
       "id": "irons_spellbooks:raw_mithril",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -15515,7 +15517,7 @@
     {
       "id": "irons_spellbooks:weapon_parts",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -15543,7 +15545,7 @@
     {
       "id": "irons_spellbooks:shriving_stone",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -15571,7 +15573,7 @@
     {
       "id": "irons_spellbooks:shriving_stone_desc",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -15588,7 +15590,7 @@
     {
       "id": "irons_spellbooks:lesser_spell_slot_upgrade",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -15614,7 +15616,7 @@
     {
       "id": "irons_spellbooks:spell_slot_upgrade_desc",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -15631,7 +15633,7 @@
     {
       "id": "irons_spellbooks:arcane_ingot",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -15659,7 +15661,7 @@
     {
       "id": "irons_spellbooks:magic_cloth",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -16133,7 +16135,7 @@
     {
       "id": "irons_spellbooks:cultist_chestplate",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [
         "blood"
@@ -16545,7 +16547,7 @@
     {
       "id": "irons_spellbooks:shadowwalker_chestplate",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [
         "shadow",
@@ -17250,7 +17252,7 @@
     {
       "id": "irons_spellbooks:blank_rune",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "upgrade",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -17289,7 +17291,7 @@
     {
       "id": "irons_spellbooks:fire_rune",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "upgrade",
       "slot": null,
       "affinities": [
         "fire"
@@ -17317,7 +17319,7 @@
     {
       "id": "irons_spellbooks:ice_rune",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "upgrade",
       "slot": null,
       "affinities": [
         "ice"
@@ -17345,7 +17347,7 @@
     {
       "id": "irons_spellbooks:lightning_rune",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "upgrade",
       "slot": null,
       "affinities": [
         "lightning"
@@ -17373,7 +17375,7 @@
     {
       "id": "irons_spellbooks:holy_rune",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "upgrade",
       "slot": null,
       "affinities": [
         "holy"
@@ -17401,7 +17403,7 @@
     {
       "id": "irons_spellbooks:blood_rune",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "upgrade",
       "slot": null,
       "affinities": [
         "blood"
@@ -17429,7 +17431,7 @@
     {
       "id": "irons_spellbooks:evocation_rune",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "upgrade",
       "slot": null,
       "affinities": [
         "evocation"
@@ -17459,7 +17461,7 @@
     {
       "id": "irons_spellbooks:ender_rune",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "upgrade",
       "slot": null,
       "affinities": [
         "ender"
@@ -17487,7 +17489,7 @@
     {
       "id": "irons_spellbooks:arcane_rune",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "upgrade",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -17513,7 +17515,7 @@
     {
       "id": "irons_spellbooks:cooldown_rune",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "upgrade",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -17539,7 +17541,7 @@
     {
       "id": "irons_spellbooks:protection_rune",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "upgrade",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -17565,7 +17567,7 @@
     {
       "id": "irons_spellbooks:nature_rune",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "upgrade",
       "slot": null,
       "affinities": [
         "nature"
@@ -17593,7 +17595,7 @@
     {
       "id": "irons_spellbooks:crypt_skull",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -17610,7 +17612,7 @@
     {
       "id": "irons_spellbooks:blood_staff",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "weapon",
       "slot": null,
       "affinities": [
         "blood"
@@ -17631,7 +17633,7 @@
     {
       "id": "irons_spellbooks:improved_blood_staff",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "weapon",
       "slot": null,
       "affinities": [
         "blood"
@@ -17650,7 +17652,7 @@
     {
       "id": "irons_spellbooks:wayward_compass",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -17677,7 +17679,7 @@
     {
       "id": "irons_spellbooks:wayward_compass_desc",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [
         "spirit"
@@ -17696,7 +17698,7 @@
     {
       "id": "irons_spellbooks:antiquated_compass",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -17713,7 +17715,7 @@
     {
       "id": "irons_spellbooks:antiquated_compass_desc",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -17730,7 +17732,7 @@
     {
       "id": "irons_spellbooks:magehunter",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -17747,7 +17749,7 @@
     {
       "id": "irons_spellbooks:spellbreaker",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -17774,7 +17776,7 @@
     {
       "id": "irons_spellbooks:amethyst_rapier",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "weapon",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -17801,7 +17803,7 @@
     {
       "id": "irons_spellbooks:truthseeker",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -17818,7 +17820,7 @@
     {
       "id": "irons_spellbooks:claymore",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -17835,7 +17837,7 @@
     {
       "id": "irons_spellbooks:misery",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -17852,7 +17854,7 @@
     {
       "id": "irons_spellbooks:keeper_flamberge",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -17871,7 +17873,7 @@
     {
       "id": "irons_spellbooks:upgrade_orb",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "upgrade",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -17900,7 +17902,7 @@
     {
       "id": "irons_spellbooks:fire_upgrade_orb",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "upgrade",
       "slot": null,
       "affinities": [
         "fire"
@@ -17928,7 +17930,7 @@
     {
       "id": "irons_spellbooks:ice_upgrade_orb",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "upgrade",
       "slot": null,
       "affinities": [
         "ice"
@@ -17956,7 +17958,7 @@
     {
       "id": "irons_spellbooks:lightning_upgrade_orb",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "upgrade",
       "slot": null,
       "affinities": [
         "lightning"
@@ -17984,7 +17986,7 @@
     {
       "id": "irons_spellbooks:holy_upgrade_orb",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "upgrade",
       "slot": null,
       "affinities": [
         "holy"
@@ -18012,7 +18014,7 @@
     {
       "id": "irons_spellbooks:ender_upgrade_orb",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "upgrade",
       "slot": null,
       "affinities": [
         "ender"
@@ -18040,7 +18042,7 @@
     {
       "id": "irons_spellbooks:blood_upgrade_orb",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "upgrade",
       "slot": null,
       "affinities": [
         "blood"
@@ -18068,7 +18070,7 @@
     {
       "id": "irons_spellbooks:evocation_upgrade_orb",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "upgrade",
       "slot": null,
       "affinities": [
         "evocation"
@@ -18096,7 +18098,7 @@
     {
       "id": "irons_spellbooks:nature_upgrade_orb",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "upgrade",
       "slot": null,
       "affinities": [
         "nature"
@@ -18124,7 +18126,7 @@
     {
       "id": "irons_spellbooks:mana_upgrade_orb",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "upgrade",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -18150,7 +18152,7 @@
     {
       "id": "irons_spellbooks:cooldown_upgrade_orb",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "upgrade",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -18176,7 +18178,7 @@
     {
       "id": "irons_spellbooks:protection_upgrade_orb",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "upgrade",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -18202,7 +18204,7 @@
     {
       "id": "irons_spellbooks:enchanted_ward_amulet",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "curio",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -18219,7 +18221,7 @@
     {
       "id": "irons_spellbooks:enchanted_ward_amulet_desc",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "curio",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -18236,7 +18238,7 @@
     {
       "id": "irons_spellbooks:mana_ring",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "curio",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -18262,7 +18264,7 @@
     {
       "id": "irons_spellbooks:silver_ring",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "curio",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -18281,7 +18283,7 @@
     {
       "id": "irons_spellbooks:cooldown_ring",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "curio",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -18309,7 +18311,7 @@
     {
       "id": "irons_spellbooks:cast_time_ring",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "curio",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -18337,7 +18339,7 @@
     {
       "id": "irons_spellbooks:emerald_stoneplate_ring",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "curio",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -18365,7 +18367,7 @@
     {
       "id": "irons_spellbooks:fireward_ring",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "curio",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -18393,7 +18395,7 @@
     {
       "id": "irons_spellbooks:poisonward_ring",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "curio",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -18421,7 +18423,7 @@
     {
       "id": "irons_spellbooks:frostward_ring",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "curio",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -18450,7 +18452,7 @@
     {
       "id": "irons_spellbooks:heavy_chain_necklace",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "curio",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -18478,7 +18480,7 @@
     {
       "id": "irons_spellbooks:conjurers_talisman",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -18507,7 +18509,7 @@
     {
       "id": "irons_spellbooks:greater_conjurers_talisman",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -18534,7 +18536,7 @@
     {
       "id": "irons_spellbooks:affinity_ring",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "curio",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -18566,7 +18568,7 @@
     {
       "id": "irons_spellbooks:concentration_amulet",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "curio",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -18595,7 +18597,7 @@
     {
       "id": "irons_spellbooks:invisibility_ring",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "curio",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -18614,7 +18616,7 @@
     {
       "id": "irons_spellbooks:casters_tea",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -18631,7 +18633,7 @@
     {
       "id": "irons_spellbooks:oakskin_elixir",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -18656,7 +18658,7 @@
     {
       "id": "irons_spellbooks:greater_oakskin_elixir",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -18681,7 +18683,7 @@
     {
       "id": "irons_spellbooks:greater_healing_potion",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -18706,7 +18708,7 @@
     {
       "id": "irons_spellbooks:invisibility_elixir",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -18732,7 +18734,7 @@
     {
       "id": "irons_spellbooks:greater_invisibility_elixir",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -18757,7 +18759,7 @@
     {
       "id": "irons_spellbooks:evasion_elixir",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -18782,7 +18784,7 @@
     {
       "id": "irons_spellbooks:greater_evasion_elixir",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -18807,7 +18809,7 @@
     {
       "id": "irons_spellbooks:ice_spider_pheromones",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [
         "ice"
@@ -18826,7 +18828,7 @@
     {
       "id": "irons_spellbooks:lurker_ring",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "curio",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -18843,7 +18845,7 @@
     {
       "id": "irons_spellbooks:amethyst_resonance_charm",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "curio",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -18869,7 +18871,7 @@
     {
       "id": "irons_spellbooks:expulsion_ring",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "curio",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -18897,7 +18899,7 @@
     {
       "id": "irons_spellbooks:visibility_ring",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "curio",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -18925,7 +18927,7 @@
     {
       "id": "irons_spellbooks:eldritch_manuscript",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [
         "eldritch"
@@ -18953,7 +18955,7 @@
     {
       "id": "irons_spellbooks:eldritch_manuscript_desc",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [
         "eldritch"
@@ -18972,7 +18974,7 @@
     {
       "id": "irons_spellbooks:ancient_knowledge_fragment",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -18999,7 +19001,7 @@
     {
       "id": "irons_spellbooks:autoloader_crossbow",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "weapon",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -19018,7 +19020,7 @@
     {
       "id": "irons_spellbooks:scroll_pouch",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "upgrade",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -19035,7 +19037,7 @@
     {
       "id": "irons_spellbooks:furled_map",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -19055,7 +19057,7 @@
     {
       "id": "irons_spellbooks:furled_map_ancient",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -19072,7 +19074,7 @@
     {
       "id": "irons_spellbooks:furled_map_descriptor_framing",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -19089,7 +19091,7 @@
     {
       "id": "irons_spellbooks:evoker_fort_battle_plans",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [
         "evocation"
@@ -19108,7 +19110,7 @@
     {
       "id": "irons_spellbooks:failed_arctic_voyage_map",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -19125,7 +19127,7 @@
     {
       "id": "irons_spellbooks:ancient_battleground_map",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -19142,7 +19144,7 @@
     {
       "id": "irons_spellbooks:citadel_map",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -19159,9 +19161,11 @@
     {
       "id": "irons_spellbooks:ice_spider_den_map",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
-      "affinities": [],
+      "affinities": [
+        "ice"
+      ],
       "setKey": null,
       "name": {
         "en": "Infested Ruin",
@@ -19176,7 +19180,7 @@
     {
       "id": "irons_spellbooks:alchemical_trade_route",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -19193,7 +19197,7 @@
     {
       "id": "irons_spellbooks:pyrium_staff",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "weapon",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -19220,7 +19224,7 @@
     {
       "id": "irons_spellbooks:graybeard_staff",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "weapon",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -19247,7 +19251,7 @@
     {
       "id": "irons_spellbooks:artificer_cane",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -19274,7 +19278,7 @@
     {
       "id": "irons_spellbooks:handwritten_invoice",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -19291,7 +19295,7 @@
     {
       "id": "irons_spellbooks:frosted_helve",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -19317,7 +19321,7 @@
     {
       "id": "irons_spellbooks:permafrost_shard",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -19336,7 +19340,7 @@
     {
       "id": "irons_spellbooks:translated_archevoker_log",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -19353,7 +19357,7 @@
     {
       "id": "irons_spellbooks:archevoker_log",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -19370,7 +19374,7 @@
     {
       "id": "irons_spellbooks:ice_staff",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "weapon",
       "slot": null,
       "affinities": [
         "ice"
@@ -19398,7 +19402,7 @@
     {
       "id": "irons_spellbooks:lightning_rod",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [
         "lightning"
@@ -19417,7 +19421,7 @@
     {
       "id": "irons_spellbooks:hither_thither_wand",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "weapon",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -19434,7 +19438,7 @@
     {
       "id": "irons_spellbooks:teleportation_amulet",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "curio",
       "slot": null,
       "affinities": [
         "ender"
@@ -19455,7 +19459,7 @@
     {
       "id": "irons_spellbooks:fire_ale",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [
         "fire"
@@ -19478,7 +19482,7 @@
     {
       "id": "irons_spellbooks:netherward_tincture",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -19497,7 +19501,7 @@
     {
       "id": "irons_spellbooks:tincture_of_forgetfulness",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -19516,7 +19520,7 @@
     {
       "id": "irons_spellbooks:energized_core",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -19542,7 +19546,7 @@
     {
       "id": "irons_spellbooks:keeper_spawn_egg",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -19559,7 +19563,7 @@
     {
       "id": "irons_spellbooks:necromancer_spawn_egg",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -19576,7 +19580,7 @@
     {
       "id": "irons_spellbooks:pyromancer_spawn_egg",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -19593,7 +19597,7 @@
     {
       "id": "irons_spellbooks:cryomancer_spawn_egg",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -19610,7 +19614,7 @@
     {
       "id": "irons_spellbooks:archevoker_spawn_egg",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -19627,7 +19631,7 @@
     {
       "id": "irons_spellbooks:dead_king_corpse_spawn_egg",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -19644,7 +19648,7 @@
     {
       "id": "irons_spellbooks:priest_spawn_egg",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -19661,7 +19665,7 @@
     {
       "id": "irons_spellbooks:apothecarist_spawn_egg",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -19678,7 +19682,7 @@
     {
       "id": "irons_spellbooks:ice_spider_spawn_egg",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [
         "ice"
@@ -19697,7 +19701,7 @@
     {
       "id": "irons_spellbooks:music_disc_dead_king_lullaby",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -19716,7 +19720,7 @@
     {
       "id": "irons_spellbooks:music_disc_flame_still_burns",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [
         "fire"
@@ -19744,7 +19748,7 @@
     {
       "id": "irons_spellbooks:music_disc_whispers_of_ice",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [
         "ice"
@@ -19763,7 +19767,7 @@
     {
       "id": "irons_spellbooks:disc_fragment_flame_still_burns",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [
         "fire"
@@ -19785,7 +19789,7 @@
     {
       "id": "irons_spellbooks:archevoker_logbook_translated",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -19802,7 +19806,7 @@
     {
       "id": "irons_spellbooks:archevoker_logbook_untranslated",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -19877,7 +19881,7 @@
     {
       "id": "irons_spellbooks:speed_boots",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -19905,7 +19909,7 @@
     {
       "id": "irons_spellbooks:mithril_weave",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -19931,7 +19935,7 @@
     {
       "id": "irons_spellbooks:cinderous_soulcaller",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -19958,7 +19962,7 @@
     {
       "id": "irons_spellbooks:decrepit_key",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -19977,7 +19981,7 @@
     {
       "id": "irons_spellbooks:bone_key",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -19996,7 +20000,7 @@
     {
       "id": "irons_spellbooks:hellrazor",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -20021,7 +20025,7 @@
     {
       "id": "irons_spellbooks:decrepit_scythe",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "weapon",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -20040,7 +20044,7 @@
     {
       "id": "irons_spellbooks:legionnaire_flamberge",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -20065,7 +20069,7 @@
     {
       "id": "irons_spellbooks:chained_book",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -20084,7 +20088,7 @@
     {
       "id": "irons_spellbooks:unchained_book",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -20101,7 +20105,7 @@
     {
       "id": "irons_spellbooks:divine_soulshard",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [
         "holy"
@@ -20122,7 +20126,7 @@
     {
       "id": "irons_spellbooks:betrayer_signet",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -20141,7 +20145,7 @@
     {
       "id": "irons_spellbooks:bloody_vellum",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -20187,7 +20191,7 @@
     {
       "id": "irons_spellbooks:icy_fang",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -20206,7 +20210,7 @@
     {
       "id": "irons_spellbooks:prepared_ice_spider_egg",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [
         "ice"
@@ -20236,7 +20240,7 @@
     {
       "id": "irons_spellbooks:cooked_ice_spider_egg",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [
         "ice"
@@ -20277,7 +20281,7 @@
     {
       "id": "irons_spellbooks:boreal_blade",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "weapon",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -20307,7 +20311,9 @@
       "mod": "irons_spellbooks",
       "type": "spellbook",
       "slot": null,
-      "affinities": [],
+      "affinities": [
+        "ice"
+      ],
       "setKey": null,
       "name": {
         "en": "Frostbranded Book",
@@ -20333,7 +20339,7 @@
     {
       "id": "irons_spellbooks:twilight_gale",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -20361,7 +20367,7 @@
     {
       "id": "irons_spellbooks:chronicle",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -20388,7 +20394,7 @@
     {
       "id": "irons_spellbooks:wicked_bone_ring",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "curio",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -20407,7 +20413,7 @@
     {
       "id": "irons_spellbooks:dead_king_phylactery",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -20433,7 +20439,7 @@
     {
       "id": "irons_spellbooks:dead_king_phylactery_shard",
       "mod": "irons_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -20920,7 +20926,9 @@
       "mod": "cataclysm_spellbooks",
       "type": "spellbook",
       "slot": null,
-      "affinities": [],
+      "affinities": [
+        "abyssal"
+      ],
       "setKey": null,
       "name": {
         "en": "Book o' R'lyeh",
@@ -21042,7 +21050,7 @@
     {
       "id": "cataclysm_spellbooks:disc_driver",
       "mod": "cataclysm_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -21069,7 +21077,7 @@
     {
       "id": "cataclysm_spellbooks:disc_driver_description",
       "mod": "cataclysm_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -21086,7 +21094,7 @@
     {
       "id": "cataclysm_spellbooks:bloom_stone_staff",
       "mod": "cataclysm_spellbooks",
-      "type": "spellbook",
+      "type": "weapon",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -21113,7 +21121,7 @@
     {
       "id": "cataclysm_spellbooks:coral_staff",
       "mod": "cataclysm_spellbooks",
-      "type": "spellbook",
+      "type": "weapon",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -21140,7 +21148,7 @@
     {
       "id": "cataclysm_spellbooks:amber_staff",
       "mod": "cataclysm_spellbooks",
-      "type": "spellbook",
+      "type": "weapon",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -21167,7 +21175,7 @@
     {
       "id": "cataclysm_spellbooks:void_staff",
       "mod": "cataclysm_spellbooks",
-      "type": "spellbook",
+      "type": "weapon",
       "slot": null,
       "affinities": [
         "ender"
@@ -21194,7 +21202,7 @@
     {
       "id": "cataclysm_spellbooks:spirit_sunderer",
       "mod": "cataclysm_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [
         "spirit"
@@ -21221,7 +21229,7 @@
     {
       "id": "cataclysm_spellbooks:gauntlet_of_power",
       "mod": "cataclysm_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -21246,7 +21254,7 @@
     {
       "id": "cataclysm_spellbooks:gauntlet_of_gattling",
       "mod": "cataclysm_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -21271,7 +21279,7 @@
     {
       "id": "cataclysm_spellbooks:engineers_power_glove",
       "mod": "cataclysm_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -21297,7 +21305,7 @@
     {
       "id": "cataclysm_spellbooks:soul_brazier",
       "mod": "cataclysm_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [
         "spirit"
@@ -21324,7 +21332,7 @@
     {
       "id": "cataclysm_spellbooks:the_nightstalker",
       "mod": "cataclysm_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -21351,7 +21359,7 @@
     {
       "id": "cataclysm_spellbooks:the_berserker",
       "mod": "cataclysm_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -21378,7 +21386,7 @@
     {
       "id": "cataclysm_spellbooks:the_combuster",
       "mod": "cataclysm_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -21405,7 +21413,7 @@
     {
       "id": "cataclysm_spellbooks:monstrous_flamberge",
       "mod": "cataclysm_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [
         "fire"
@@ -21440,7 +21448,7 @@
     {
       "id": "cataclysm_spellbooks:hellfire_forge",
       "mod": "cataclysm_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [
         "fire"
@@ -21475,7 +21483,7 @@
     {
       "id": "cataclysm_spellbooks:spellstealer",
       "mod": "cataclysm_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [
         "evocation"
@@ -21510,7 +21518,7 @@
     {
       "id": "cataclysm_spellbooks:murasama_blade",
       "mod": "cataclysm_spellbooks",
-      "type": "spellbook",
+      "type": "weapon",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -21537,7 +21545,7 @@
     {
       "id": "cataclysm_spellbooks:abyssal_rune",
       "mod": "cataclysm_spellbooks",
-      "type": "spellbook",
+      "type": "upgrade",
       "slot": null,
       "affinities": [
         "abyssal"
@@ -21565,7 +21573,7 @@
     {
       "id": "cataclysm_spellbooks:technomancy_rune",
       "mod": "cataclysm_spellbooks",
-      "type": "spellbook",
+      "type": "upgrade",
       "slot": null,
       "affinities": [
         "technomancy"
@@ -21593,7 +21601,7 @@
     {
       "id": "cataclysm_spellbooks:mechanical_scrap",
       "mod": "cataclysm_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [
         "technomancy"
@@ -21612,7 +21620,7 @@
     {
       "id": "cataclysm_spellbooks:excel_upgrade_mana",
       "mod": "cataclysm_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -21638,7 +21646,7 @@
     {
       "id": "cataclysm_spellbooks:excel_upgrade_resistence",
       "mod": "cataclysm_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -21664,7 +21672,7 @@
     {
       "id": "cataclysm_spellbooks:excel_upgrade_cooldown",
       "mod": "cataclysm_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -21690,7 +21698,7 @@
     {
       "id": "cataclysm_spellbooks:burning_knowledge_fragment",
       "mod": "cataclysm_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -21710,7 +21718,7 @@
     {
       "id": "cataclysm_spellbooks:burning_knowledge_fragment_description",
       "mod": "cataclysm_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -21727,7 +21735,7 @@
     {
       "id": "cataclysm_spellbooks:burning_manuscript",
       "mod": "cataclysm_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -21753,7 +21761,7 @@
     {
       "id": "cataclysm_spellbooks:burning_manuscript_description",
       "mod": "cataclysm_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -21770,7 +21778,7 @@
     {
       "id": "cataclysm_spellbooks:frozen_knowledge_fragment",
       "mod": "cataclysm_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -21789,7 +21797,7 @@
     {
       "id": "cataclysm_spellbooks:frozen_knowledge_fragment_description",
       "mod": "cataclysm_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -21806,7 +21814,7 @@
     {
       "id": "cataclysm_spellbooks:frozen_tablet",
       "mod": "cataclysm_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -21832,7 +21840,7 @@
     {
       "id": "cataclysm_spellbooks:frozen_tablet_description",
       "mod": "cataclysm_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -21849,7 +21857,7 @@
     {
       "id": "cataclysm_spellbooks:strange_disc",
       "mod": "cataclysm_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -21875,7 +21883,7 @@
     {
       "id": "cataclysm_spellbooks:strange_disc_description",
       "mod": "cataclysm_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -21892,7 +21900,7 @@
     {
       "id": "cataclysm_spellbooks:strange_disc_fragment",
       "mod": "cataclysm_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -21912,7 +21920,7 @@
     {
       "id": "cataclysm_spellbooks:hieroglyph_manuscript",
       "mod": "cataclysm_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -21931,7 +21939,7 @@
     {
       "id": "cataclysm_spellbooks:hieroglyph_manuscript_description",
       "mod": "cataclysm_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -21948,9 +21956,11 @@
     {
       "id": "cataclysm_spellbooks:abyssal_manuscript",
       "mod": "cataclysm_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
-      "affinities": [],
+      "affinities": [
+        "abyssal"
+      ],
       "setKey": null,
       "name": {
         "en": "Teared Manuscript",
@@ -21967,7 +21977,7 @@
     {
       "id": "cataclysm_spellbooks:abyssal_manuscript_description",
       "mod": "cataclysm_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [
         "abyssal"
@@ -21986,7 +21996,7 @@
     {
       "id": "cataclysm_spellbooks:encoded_print",
       "mod": "cataclysm_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -22005,7 +22015,7 @@
     {
       "id": "cataclysm_spellbooks:encoded_print_description",
       "mod": "cataclysm_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [
         "fire"
@@ -22024,7 +22034,7 @@
     {
       "id": "cataclysm_spellbooks:crystallized_manuscript",
       "mod": "cataclysm_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -22043,7 +22053,7 @@
     {
       "id": "cataclysm_spellbooks:crystallized_manuscript_description",
       "mod": "cataclysm_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -22060,7 +22070,7 @@
     {
       "id": "cataclysm_spellbooks:blessed_crystallized_manuscript",
       "mod": "cataclysm_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -22085,7 +22095,7 @@
     {
       "id": "cataclysm_spellbooks:blessed_crystallized_manuscript_description",
       "mod": "cataclysm_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -22102,7 +22112,7 @@
     {
       "id": "cataclysm_spellbooks:oracle_shulker_shell_script",
       "mod": "cataclysm_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -22121,7 +22131,7 @@
     {
       "id": "cataclysm_spellbooks:oracle_shulker_shell_script_description",
       "mod": "cataclysm_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [
         "ender"
@@ -22140,7 +22150,7 @@
     {
       "id": "cataclysm_spellbooks:arcane_cog",
       "mod": "cataclysm_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -22167,7 +22177,7 @@
     {
       "id": "cataclysm_spellbooks:ancient_amber",
       "mod": "cataclysm_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -22203,7 +22213,7 @@
     {
       "id": "cataclysm_spellbooks:mechanical_weapon_parts",
       "mod": "cataclysm_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [
         "technomancy"
@@ -22552,7 +22562,7 @@
     {
       "id": "cataclysm_spellbooks:cursium_mage_chestplate",
       "mod": "cataclysm_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -22577,7 +22587,7 @@
     {
       "id": "cataclysm_spellbooks:cursium_mage_elytra",
       "mod": "cataclysm_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [
         "ice"
@@ -22683,7 +22693,7 @@
     {
       "id": "cataclysm_spellbooks:pharaoh_chestplate",
       "mod": "cataclysm_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [
         "holy"
@@ -23132,7 +23142,7 @@
     {
       "id": "cataclysm_spellbooks:engineer_suit",
       "mod": "cataclysm_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -23234,7 +23244,7 @@
     {
       "id": "cataclysm_spellbooks:leviathans_blessing",
       "mod": "cataclysm_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -23253,7 +23263,7 @@
     {
       "id": "cataclysm_spellbooks:adapter",
       "mod": "cataclysm_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [
         "lightning",
@@ -23294,7 +23304,7 @@
     {
       "id": "cataclysm_spellbooks:necklace_of_thoth",
       "mod": "cataclysm_spellbooks",
-      "type": "spellbook",
+      "type": "curio",
       "slot": null,
       "affinities": [
         "holy"
@@ -23315,7 +23325,7 @@
     {
       "id": "cataclysm_spellbooks:burst_sheath",
       "mod": "cataclysm_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -23332,7 +23342,7 @@
     {
       "id": "cataclysm_spellbooks:mechanical_brace",
       "mod": "cataclysm_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [
         "technomancy"
@@ -23359,7 +23369,7 @@
     {
       "id": "cataclysm_spellbooks:necklace_of_the_past",
       "mod": "cataclysm_spellbooks",
-      "type": "spellbook",
+      "type": "curio",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -23388,7 +23398,7 @@
     {
       "id": "cataclysm_spellbooks:abyssal_upgrade_orb",
       "mod": "cataclysm_spellbooks",
-      "type": "spellbook",
+      "type": "upgrade",
       "slot": null,
       "affinities": [
         "abyssal"
@@ -23416,7 +23426,7 @@
     {
       "id": "cataclysm_spellbooks:technomancy_upgrade_orb",
       "mod": "cataclysm_spellbooks",
-      "type": "spellbook",
+      "type": "upgrade",
       "slot": null,
       "affinities": [
         "technomancy"
@@ -23444,7 +23454,7 @@
     {
       "id": "cataclysm_spellbooks:ancient_ancient_remnant_spawn_egg",
       "mod": "cataclysm_spellbooks",
-      "type": "spellbook",
+      "type": "item",
       "slot": null,
       "affinities": [],
       "setKey": null,
@@ -24583,7 +24593,9 @@
       "mod": "discerning_the_eldritch",
       "type": "armor",
       "slot": "helmet",
-      "affinities": [],
+      "affinities": [
+        "eldritch"
+      ],
       "setKey": "eldritch_warlock",
       "name": {
         "en": "Apothic Acolyte Hood",
@@ -24608,7 +24620,9 @@
       "mod": "discerning_the_eldritch",
       "type": "armor",
       "slot": "chestplate",
-      "affinities": [],
+      "affinities": [
+        "eldritch"
+      ],
       "setKey": "eldritch_warlock",
       "name": {
         "en": "Apothic Acolyte Robes",
@@ -24633,7 +24647,9 @@
       "mod": "discerning_the_eldritch",
       "type": "item",
       "slot": null,
-      "affinities": [],
+      "affinities": [
+        "eldritch"
+      ],
       "setKey": null,
       "name": {
         "en": "Apothic Acolyte Breeches",
@@ -24658,7 +24674,9 @@
       "mod": "discerning_the_eldritch",
       "type": "armor",
       "slot": "leggings",
-      "affinities": [],
+      "affinities": [
+        "eldritch"
+      ],
       "setKey": "eldritch_warlock",
       "name": {
         "en": "Apothic Acolyte Greaves",
@@ -40863,7 +40881,9 @@
       "mod": "iss_magicfromtheeast",
       "type": "weapon",
       "slot": null,
-      "affinities": [],
+      "affinities": [
+        "symmetry"
+      ],
       "setKey": null,
       "name": {
         "en": "Banner Pattern",

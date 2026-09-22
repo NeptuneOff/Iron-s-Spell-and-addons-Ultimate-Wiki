@@ -41,7 +41,7 @@ const schoolSymbolItems = {
   fire: "irons_spellbooks:fire_rune", ice: "irons_spellbooks:ice_rune", lightning: "irons_spellbooks:lightning_rune",
   holy: "irons_spellbooks:holy_rune", ender: "irons_spellbooks:ender_rune", blood: "irons_spellbooks:blood_rune",
   evocation: "irons_spellbooks:evocation_rune", nature: "irons_spellbooks:nature_rune",
-  eldritch: "discerning_the_eldritch:eldritch_rune", ritual: "discerning_the_eldritch:ritual_rune",
+  eldritch: "discerning_the_eldritch:eldritch_upgrade_orb", ritual: "discerning_the_eldritch:ritual_rune",
   hydro: "hazennstuff:hydro_rune", technomancy: "cataclysm_spellbooks:technomancy_rune",
   abyssal: "cataclysm_spellbooks:abyssal_rune", symmetry: "iss_magicfromtheeast:symmetry_rune",
   spirit: "iss_magicfromtheeast:spirit_rune", radiance: "hazentouvelib:radiance_rune",
@@ -219,14 +219,18 @@ function recipeIngredients(json) {
 function itemShape(id, en) {
   // Never include the namespace here: `irons_spellbooks:*` would otherwise
   // make every item from the base mod look like a spellbook.
-  const value = `${id.split(":")[1] ?? id} ${en}`.toLowerCase();
+  const path = (id.split(":")[1] ?? id).toLowerCase();
+  const displayName = en.toLowerCase();
+  const value = `${path} ${displayName}`;
   const slotRules = [
     ["helmet", /(helmet|hat|hood|mask|crown|head dress|headdress|visor|horns|hair|circlet|blindfold)$/],
     ["chestplate", /(chestplate|robe|robes|tunic|coat|jacket|cuirass|chest piece)$/],
     ["leggings", /(leggings|pants|trousers|greaves|skirt)$/],
     ["boots", /(boots|shoes|slippers|sabaton|sandals|geta)$/]
   ];
-  const slot = slotRules.find(([, pattern]) => pattern.test(value))?.[0] ?? null;
+  // The registry path is authoritative for armor slots. Display names often
+  // end in thematic words such as “Breeches”, “Tracers” or “Scale Mail”.
+  const slot = slotRules.find(([, pattern]) => pattern.test(path) || pattern.test(displayName))?.[0] ?? null;
   let type = slot ? "armor" : "item";
   if (!slot && /(spellbook|spell_book|grimoire|codex|tome|volume)/.test(value)) type = "spellbook";
   else if (!slot && /(sword|staff|dagger|scythe|spear|halberd|hammer|axe|bow|mace|blade|trident|gun|wand|rapier|katana|pike|lance|crossbow|pickaxe)/.test(value)) type = "weapon";
@@ -235,7 +239,6 @@ function itemShape(id, en) {
   const affinities = Object.entries(schoolAliases).filter(([, aliases]) => aliases.some(alias => new RegExp(`(^|[_\\s-])${alias.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}([_\\s-]|$)`, "i").test(value))).map(([school]) => school);
   let setKey = null;
   if (slot) {
-    const path = id.split(":")[1];
     setKey = path
       .replace(/_(helmet|chestplate|leggings|boots|hat|hood|mask|crown|head_dress|headdress|visor|horns|hair|circlet|blindfold|robe|robes|tunic|coat|jacket|cuirass|pants|trousers|greaves|skirt|shoes|slippers|sabaton|sandals|geta)$/i, "")
       .replace(/^(helmet|chestplate|leggings|boots)_/i, "");

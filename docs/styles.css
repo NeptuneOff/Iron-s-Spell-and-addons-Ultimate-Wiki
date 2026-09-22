@@ -151,10 +151,36 @@ h3 { margin: 0; }
 .armor-slots > span { position: relative; width: 48px; height: 48px; display: grid; place-items: center; background: var(--panel-2); border: 1px solid var(--line); border-radius: 4px; }
 .armor-slots b { position: absolute; right: 1px; bottom: 1px; font-size: .58rem; color: var(--gold); }
 .item-modal-head { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
-.recipe { padding: .8rem; background: var(--panel-2); border: 1px solid var(--line); margin: .6rem 0; }
-.ingredients { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .6rem; }
-.ingredients > span { display: flex; align-items: center; gap: .25rem; padding: .2rem .4rem; border: 1px solid var(--line); border-radius: 4px; }
-.ingredients code { font-size: .65rem; }
+.recipe { padding: 1rem; background: var(--panel-2); border: 1px solid var(--line); margin: .75rem 0; }
+.recipe-title { display: flex; align-items: center; gap: .55rem; margin-bottom: .9rem; }
+.recipe-title > span { display: grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: var(--gold); color: #171109; font-weight: 800; font-size: .7rem; }
+.recipe-title strong { font: 600 .85rem Cinzel; color: var(--text); }
+.craft-layout, .smithing-flow { display: flex; align-items: center; justify-content: center; gap: .65rem; overflow-x: auto; padding: .25rem 0 .65rem; }
+.craft-grid { display: grid; grid-template-columns: repeat(var(--craft-cols), 66px); gap: 4px; padding: 7px; background: color-mix(in srgb, var(--panel) 82%, var(--gold)); border: 1px solid var(--line); border-radius: 6px; }
+.craft-slot { min-width: 150px; min-height: 76px; display: flex; align-items: center; gap: .55rem; padding: .35rem .5rem; background: var(--panel); border: 1px solid var(--line); border-radius: 5px; }
+.craft-slot.compact { min-width: 66px; width: 66px; min-height: 66px; height: 66px; padding: 0; display: grid; place-items: center; }
+.craft-slot.empty-slot { min-width: 66px; width: 66px; min-height: 66px; height: 66px; background: color-mix(in srgb, var(--panel) 70%, transparent); border-style: dashed; }
+.craft-slot > span:not(.item-icon):not(.ingredient-fallback) { min-width: 0; display: grid; gap: .12rem; }
+.craft-slot strong { font-size: .7rem; line-height: 1.2; }
+.craft-slot small { color: var(--gold); font-size: .58rem; }
+.craft-slot code { max-width: 160px; overflow: hidden; text-overflow: ellipsis; color: var(--muted); font-size: .55rem; white-space: nowrap; }
+.ingredient-fallback { width: 46px; height: 46px; flex: 0 0 46px; display: grid; place-items: center; border: 1px solid var(--gold); border-radius: 5px; color: var(--gold); background: rgba(212,171,97,.08); font: 700 .8rem Cinzel; }
+.craft-icon { margin: 0; }
+.craft-result { min-width: 112px; display: grid; place-items: center; text-align: center; gap: .15rem; }
+.craft-result .item-icon { transform: scale(1.2); margin: 7px; }
+.craft-result small { color: var(--gold); font-size: .58rem; text-transform: uppercase; letter-spacing: .08em; }
+.craft-result strong { max-width: 150px; font-size: .7rem; }
+.craft-arrow { color: var(--gold); font-size: 1.7rem; }
+.craft-legend { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: .4rem; margin-top: .5rem; }
+.smithing-flow > div { display: grid; gap: .35rem; justify-items: center; }
+.smithing-flow > div > small { color: var(--gold); font-size: .62rem; text-transform: uppercase; letter-spacing: .05em; }
+.smithing-flow > b { color: var(--muted); font-size: 1.15rem; }
+.smithing-flow .craft-slot { width: 160px; min-width: 160px; display: grid; justify-items: center; text-align: center; }
+.smithing-flow .craft-slot code { max-width: 145px; }
+.craft-inputs { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px; max-width: 350px; }
+.cooking-box { display: grid; justify-items: center; gap: .35rem; padding: .65rem; border: 1px solid var(--line); background: var(--panel); }
+.cooking-box > span { color: var(--gold); font-size: 1.7rem; }
+.cooking-box > small { color: var(--muted); font-size: .6rem; }
 .armor-piece-group { margin-top: 1.5rem; }
 .build-shell { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(300px, .8fr); gap: 1rem; align-items: start; }
 .build-panel { background: var(--panel); border: 1px solid var(--line); border-radius: 7px; padding: 1.2rem; }
@@ -211,6 +237,8 @@ h3 { margin: 0; }
   .toolbar { grid-template-columns: 1fr; }
   .toolbar .input:first-child { grid-column: auto; }
   .detail-grid { grid-template-columns: 1fr 1fr; }
+  .smithing-flow { justify-content: flex-start; }
+  .craft-legend { grid-template-columns: 1fr; }
   .source-row { grid-template-columns: 1fr auto; }
   .source-row > :nth-child(2), .source-row > :nth-child(3) { display: none; }
 }

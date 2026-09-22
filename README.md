@@ -41,9 +41,10 @@ Le site ne nécessite aucun build : servez simplement le dossier `docs/`.
 npm run serve
 ```
 
-La commande d'extraction est réservée à la maintenance et attend les JAR autorisés dans le dossier de travail local ; ceux-ci ne sont jamais commités.
+La commande d’extraction est réservée à la maintenance et attend les JAR autorisés dans le dossier de travail local ; ceux-ci ne sont jamais commités.
 
 ```bash
+python3 -m pip install -r requirements.txt
 npm run extract
 npm run check
 ```

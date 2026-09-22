@@ -25,7 +25,7 @@ Les dépendances de contenu — notamment L_Ender's Cataclysm, Deeper and Darker
 
 ### Fiabilité des données
 
-Le catalogue est généré depuis les JAR exacts du modpack, sans redistribuer leur code ni leurs ressources. Chaque mod reçoit un état de provenance :
+Le catalogue est généré depuis les JAR exacts du modpack, sans redistribuer leur code ni les JAR eux-mêmes. Un atlas limité aux icônes d'objets et de runes est utilisé à des fins d'identification visuelle dans le wiki. Chaque mod reçoit un état de provenance :
 
 - **source exacte** : dépôt et version installée correspondent ;
 - **JAR exact, dépôt en retard** : les valeurs du JAR installé priment ;
@@ -54,8 +54,8 @@ Interactive bilingual wiki for **Minecraft 1.21.1**, **NeoForge 21.1.250**, usin
 
 It covers schools, spells, gear, enchantments, entities, structures, acquisition paths, and a hybrid build creator: guided recommendations or free composition with one or two schools.
 
-The catalogue is generated from the modpack's exact JAR files without redistributing their code or assets. Official French translations are used where available; untranslated addon content retains its original English text.
+The catalogue is generated from the modpack's exact JAR files without redistributing their code or the JARs themselves. A limited atlas of item and rune icons is used for visual identification in the wiki. Official French translations are used where available; untranslated addon content retains its original English text.
 
 ## Legal
 
-This is an unofficial community project. Minecraft, mod names and third-party content belong to their respective owners. The repository contains derived factual metadata and source links, not mod JARs or extracted art assets.
+This is an unofficial community project. Minecraft, mod names, icons, and third-party content belong to their respective owners. The repository contains derived factual metadata, source links, and the limited visual-identification atlas described above; it does not contain mod JARs.

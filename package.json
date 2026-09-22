@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "extract": "node scripts/extract-content.mjs",
+    "extract:data": "node scripts/extract-content.mjs",
+    "extract:icons": "python3 scripts/extract-item-icons.py",
+    "extract": "npm run extract:data && npm run extract:icons",
     "check": "node scripts/check-data.mjs",
     "serve": "npx serve docs"
   }

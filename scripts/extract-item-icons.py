@@ -91,6 +91,32 @@ def item_model(zf: zipfile.ZipFile, names: set[str], namespace: str, item_id: st
     return load_json(zf, path) if path in names else {}
 
 
+def resolved_item_model(zf: zipfile.ZipFile, names: set[str], namespace: str, item_id: str) -> dict:
+    """Resolve custom JSON parents while preserving child textures/display overrides."""
+    path = f"assets/{namespace}/models/item/{item_id}.json"
+    seen: set[str] = set()
+    chain: list[dict] = []
+    while path in names and path not in seen:
+        seen.add(path)
+        model = load_json(zf, path) or {}
+        chain.append(model)
+        parent = model.get("parent")
+        if not isinstance(parent, str) or parent.startswith("minecraft:"):
+            break
+        parent_ns, _, parent_path = parent.partition(":")
+        if not parent_path:
+            parent_ns, parent_path = namespace, parent_ns
+        path = f"assets/{parent_ns}/models/{parent_path}.json"
+    merged: dict = {}
+    for model in reversed(chain):
+        for key, value in model.items():
+            if key in {"textures", "display"}:
+                merged[key] = {**merged.get(key, {}), **value}
+            else:
+                merged[key] = value
+    return merged
+
+
 def geo_path(names: set[str], namespace: str, item_id: str) -> str | None:
     matches = [
         name for name in names
@@ -260,9 +286,80 @@ def render_geo_icon(zf: zipfile.ZipFile, path: str, texture_path_value: str, mod
     return canvas.resize((CELL, CELL), Image.Resampling.LANCZOS)
 
 
-def render_icon(zf: zipfile.ZipFile, paths: list[str], label: str, seed: str, model: dict | None = None, geo: str | None = None) -> tuple[Image.Image, bool, bool]:
+def render_element_icon(zf: zipfile.ZipFile, model: dict, namespace: str) -> Image.Image | None:
+    """Render vanilla/Blockbench item-model elements into an isometric atlas icon."""
+    elements = model.get("elements", [])
+    if not elements:
+        return None
+    textures: dict[str, Image.Image] = {}
+    refs = model.get("textures", {})
+    for key, ref in refs.items():
+        guard = 0
+        while isinstance(ref, str) and ref.startswith("#") and guard < 8:
+            ref = refs.get(ref[1:])
+            guard += 1
+        if isinstance(ref, str):
+            try:
+                textures[key] = first_frame(Image.open(io.BytesIO(zf.read(texture_path(ref, namespace)))))
+            except (KeyError, OSError):
+                pass
+    if not textures:
+        return None
+    face_indices = {
+        "north": (0, 1, 3, 2), "south": (4, 6, 7, 5),
+        "west": (0, 2, 6, 4), "east": (1, 5, 7, 3),
+        "down": (0, 4, 5, 1), "up": (2, 3, 7, 6),
+    }
+    gui = model.get("display", {}).get("gui", {})
+    view = rotation_matrix(gui.get("rotation", [30, 225, 0]))
+    raw_faces, all_points = [], []
+    for element in elements:
+        lo = np.asarray(element.get("from", [0, 0, 0]), dtype=float)
+        hi = np.asarray(element.get("to", [16, 16, 16]), dtype=float)
+        corners = np.array([
+            [lo[0], lo[1], lo[2], 1], [hi[0], lo[1], lo[2], 1],
+            [lo[0], hi[1], lo[2], 1], [hi[0], hi[1], lo[2], 1],
+            [lo[0], lo[1], hi[2], 1], [hi[0], lo[1], hi[2], 1],
+            [lo[0], hi[1], hi[2], 1], [hi[0], hi[1], hi[2], 1],
+        ])
+        rot = element.get("rotation", {})
+        transform = np.identity(4)
+        if rot:
+            angles = [0, 0, 0]
+            angles[{"x": 0, "y": 1, "z": 2}.get(rot.get("axis"), 1)] = rot.get("angle", 0)
+            transform = around_pivot(rot.get("origin", [8, 8, 8]), angles)
+        points = (view @ transform @ corners.T).T[:, :3]
+        all_points.extend(points)
+        for face, spec in element.get("faces", {}).items():
+            if face not in face_indices:
+                continue
+            key = str(spec.get("texture", "#particle")).lstrip("#")
+            texture = textures.get(key) or textures.get("particle") or next(iter(textures.values()))
+            uv = spec.get("uv", [0, 0, 16, 16])
+            # Vanilla model UVs use a logical 16×16 canvas.
+            uv = tuple(float(v) * texture.width / 16 for v in uv)
+            face_points = points[list(face_indices[face])]
+            raw_faces.append((float(face_points[:, 2].mean()), face, face_points, uv, texture))
+    if not all_points:
+        return None
+    all_points = np.asarray(all_points)
+    scale = min(224 / max(float(np.ptp(all_points[:, 0])), .1), 224 / max(float(np.ptp(all_points[:, 1])), .1))
+    center = np.array([(all_points[:, 0].min() + all_points[:, 0].max()) / 2, (all_points[:, 1].min() + all_points[:, 1].max()) / 2])
+    canvas = Image.new("RGBA", (256, 256))
+    shade = {"up": 1.1, "down": .58, "north": .9, "south": .78, "west": .68, "east": 1.0}
+    for _, face, points, uv, texture in sorted(raw_faces, key=lambda entry: entry[0]):
+        polygon = [((p[0] - center[0]) * scale + 128, 128 - (p[1] - center[1]) * scale) for p in points]
+        paste_affine_face(canvas, texture, polygon, uv, shade[face])
+    return canvas.resize((CELL, CELL), Image.Resampling.LANCZOS)
+
+
+def render_icon(zf: zipfile.ZipFile, paths: list[str], label: str, seed: str, model: dict | None = None, geo: str | None = None, namespace: str = "minecraft") -> tuple[Image.Image, bool, bool]:
     if geo and paths:
         rendered = render_geo_icon(zf, geo, paths[0], model or {})
+        if rendered is not None:
+            return rendered, True, True
+    if model and model.get("elements"):
+        rendered = render_element_icon(zf, model, namespace)
         if rendered is not None:
             return rendered, True, True
     layers: list[Image.Image] = []
@@ -318,12 +415,12 @@ def main() -> None:
         for index, item in enumerate(data["items"]):
             zf, names = opened[item["mod"]]
             namespace, item_id = item["id"].split(":", 1)
-            model = item_model(zf, names, namespace, item_id)
+            model = resolved_item_model(zf, names, namespace, item_id)
             paths = model_textures(zf, names, namespace, item_id)
             if not paths:
                 paths = candidate_textures(names, namespace, item_id)
             geo = geo_path(names, namespace, item_id) if model.get("parent") == "builtin/entity" else None
-            icon, is_authentic, is_model_rendered = render_icon(zf, paths, item["name"]["en"], item["id"], model, geo)
+            icon, is_authentic, is_model_rendered = render_icon(zf, paths, item["name"]["en"], item["id"], model, geo, namespace)
             authentic += int(is_authentic)
             model_rendered += int(is_model_rendered)
             x, y = (index % COLUMNS) * CELL, (index // COLUMNS) * CELL
@@ -337,7 +434,7 @@ def main() -> None:
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     atlas.save(ATLAS_PATH, "WEBP", lossless=True, method=6)
     data.setdefault("meta", {})["itemAtlas"] = {
-        "path": "./assets/item-icons.webp?v=20260922-3",
+        "path": "./assets/item-icons.webp?v=20260924-1",
         "cell": CELL,
         "columns": COLUMNS,
         "width": atlas.width,

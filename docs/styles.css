@@ -65,6 +65,19 @@ html[lang="en"] .language-button i::after { transform: translateX(12px); }
 .github-button { padding: .55rem .75rem; font-size: .78rem; }
 .menu-button { display: none; padding: .5rem; }
 .theme-button { display: grid; place-items: center; width: 38px; height: 38px; }
+.mods-button { border: 1px solid var(--line); background: var(--panel); color: var(--text); border-radius: 5px; padding: .55rem .75rem; cursor: pointer; }
+.mods-panel { position: fixed; z-index: 70; top: 60px; right: 8rem; width: min(390px, calc(100vw - 2rem)); max-height: calc(100vh - 80px); overflow: auto; padding: 1rem; background: var(--panel); border: 1px solid var(--accent); border-radius: 7px; box-shadow: 0 25px 80px var(--shadow); }
+.mods-panel-head { display: flex; justify-content: space-between; align-items: center; }
+.mods-panel label { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: .65rem; padding: .6rem .2rem; border-top: 1px solid var(--line); cursor: pointer; }
+.mods-panel label small { color: var(--muted); }
+.item-card { overflow: visible; }
+.item-hover { position: absolute; z-index: 12; left: 1rem; right: 1rem; top: calc(100% - .4rem); display: none; padding: .7rem; background: var(--panel); border: 1px solid var(--gold); border-radius: 5px; box-shadow: 0 15px 45px var(--shadow); }
+.item-card:hover .item-hover, .item-card:focus-within .item-hover { display: grid; gap: .25rem; }
+.item-hover strong { color: var(--gold); font-size: .72rem; }
+.item-hover span { color: var(--muted); font-size: .67rem; }
+.pill.reference { color: var(--gold); border-color: color-mix(in srgb, var(--gold) 55%, var(--line)); }
+.recipe-title small { margin-left: auto; color: var(--muted); }
+.acquisition-list li { margin: .45rem 0; color: var(--muted); }
 main { margin-left: var(--sidebar); padding: 68px 0 4rem; min-height: 100vh; }
 .page { width: min(1240px, calc(100% - 4rem)); margin: 0 auto; padding-top: 2.4rem; animation: page-in .24s ease; }
 @keyframes page-in { from { opacity: 0; transform: translateY(6px); } }

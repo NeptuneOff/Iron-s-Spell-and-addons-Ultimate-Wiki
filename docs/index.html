@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./styles.css?v=20260922-3">
+  <link rel="stylesheet" href="./styles.css?v=20260924-1">
 </head>
 <body>
   <a class="skip-link" href="#content">Aller au contenu</a>
@@ -34,10 +34,12 @@
       <input id="global-search" type="search" autocomplete="off" placeholder="Rechercher un sort, objet, mob…">
       <kbd>/</kbd>
     </div>
+    <button class="mods-button" id="mods-button" aria-expanded="false">Mods</button>
     <button class="language-button" id="language-button" aria-label="Changer de langue"><span>FR</span><i></i><span>EN</span></button>
     <button class="icon-button theme-button" id="theme-button" aria-label="Changer de thème" title="Changer de thème">☼</button>
     <a class="github-button" href="https://github.com/NeptuneOff/Iron-s-Spell-and-addons-Ultimate-Wiki" target="_blank" rel="noreferrer">GitHub ↗</a>
   </header>
+  <aside class="mods-panel" id="mods-panel" hidden></aside>
 
   <main id="content" tabindex="-1"></main>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
@@ -45,11 +47,11 @@
     const wikiFetch = window.fetch.bind(window);
     window.fetch = (resource, options) => wikiFetch(
       typeof resource === "string" && resource.endsWith("data/content.json")
-        ? `${resource}?v=20260922-3`
+        ? `${resource}?v=20260924-1`
         : resource,
       options
     );
   </script>
-  <script type="module" src="./app.js?v=20260922-3"></script>
+  <script type="module" src="./app.js?v=20260924-1"></script>
 </body>
 </html>

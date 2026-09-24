@@ -14,4 +14,7 @@ if (occult?.name?.en !== "Occult" || occult?.name?.fr !== "Occulte") throw new E
 if (!Array.isArray(data.armorSets) || data.armorSets.length < 100) throw new Error("Armor-set grouping is missing");
 if (!data.meta?.itemAtlas || data.meta.itemAtlas.total !== data.items.length) throw new Error("Item atlas is incomplete");
 if (data.items.some(i => i.iconIndex == null)) throw new Error("An item has no visual");
+if (data.meta?.schema !== 3) throw new Error("Enhanced data missing");
+if (data.schools.find(s=>s.id==="eldritch")?.symbolItem!=="discerning_the_eldritch:eldritch_rune") throw new Error("Wrong Eldritch symbol");
+if(data.items.some(i=>!Array.isArray(i.boosts)||!Array.isArray(i.acquisitionSources)))throw new Error("Item metadata missing");
 console.log(`OK — ${data.spells.length} spells across ${data.schools.filter(s => s.spellCount).length} active schools.`);

@@ -17,4 +17,8 @@ if (data.items.some(i => i.iconIndex == null)) throw new Error("An item has no v
 if (data.meta?.schema !== 3) throw new Error("Enhanced data missing");
 if (data.schools.find(s=>s.id==="eldritch")?.symbolItem!=="discerning_the_eldritch:eldritch_rune") throw new Error("Wrong Eldritch symbol");
 if(data.items.some(i=>!Array.isArray(i.boosts)||!Array.isArray(i.acquisitionSources)))throw new Error("Item metadata missing");
+if (data.spells.filter(s => s.reference).length < 10) throw new Error("Spell references missing");
+if (data.items.some(i => [...(i.recipes || []), ...(i.acquisitionSources || [])].some(x => !x.sourceMod))) throw new Error("Unattributed acquisition route");
+const malice = data.items.find(i => i.id === "discerning_the_eldritch:shard_of_malice");
+if (!malice?.acquisitionSources?.some(x => x.kind === "mob_drop" && x.target.includes("wither_skeleton"))) throw new Error("Shard of Malice acquisition missing");
 console.log(`OK — ${data.spells.length} spells across ${data.schools.filter(s => s.spellCount).length} active schools.`);
